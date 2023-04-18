@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Mala extends Artigo {
     private float comprimento, largura, altura;
     private String material;
@@ -14,25 +16,25 @@ public class Mala extends Artigo {
         this.premium = false;
     }
 
-    public Mala(String descricao, String marca, String cod, float precoBase, float correcaoPreco, float comprimento, float largura, float altura, String material, int anoColecao, boolean premium, Transportadora transportadora) {
-        super(descricao, marca, cod, precoBase, correcaoPreco, transportadora);
+    public Mala(int fiscalUtilizador, Condicao condicao, String estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, float comprimento, float largura, float altura, String material, int anoColecao, boolean premium, Transportadora transportadora) {
+        super(fiscalUtilizador, condicao, estado, donos, descricao, marca, cod, precoBase, correcaoPreco, transportadora);
         this.comprimento = comprimento;
         this.largura = largura;
         this.altura = altura;
         this.material = material;
         this.anoColecao = anoColecao;
         this.premium = premium;
-    } // nova
+    }
 
-    public Mala(Condicao condicao, String estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, float comprimento, float largura, float altura, String material, int anoColecao, boolean premium, Transportadora transportadora) {
-        super(condicao, estado, donos, descricao, marca, cod, precoBase, correcaoPreco, transportadora);
-        this.comprimento = comprimento;
-        this.largura = largura;
-        this.altura = altura;
-        this.material = material;
-        this.anoColecao = anoColecao;
-        this.premium = premium;
-    } // usada
+    public Mala(Mala m) {
+        super(m);
+        this.comprimento = m.getComprimento();
+        this.largura = m.getLargura();
+        this.altura = m.getAltura();
+        this.material = m.getMaterial();
+        this.anoColecao = m.getAnoColecao();
+        this.premium = m.isPremium();
+    }
 
     public float getComprimento() {
         return comprimento;
@@ -79,4 +81,29 @@ public class Mala extends Artigo {
     public void setPremium(boolean premium) {
         this.premium = premium;
     }
+
+    public Mala clone() {
+        return new Mala(this);
+    }
+
+    public String toString() {
+        return "Mala{" +
+                super.toString() +
+                ", comprimento=" + comprimento +
+                ", largura=" + largura +
+                ", altura=" + altura +
+                ", material='" + material + '\'' +
+                ", anoColecao=" + anoColecao +
+                ", premium=" + premium +
+                '}';
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Mala mala = (Mala) o;
+        return Float.compare(mala.comprimento, comprimento) == 0 && Float.compare(mala.largura, largura) == 0 && Float.compare(mala.altura, altura) == 0 && anoColecao == mala.anoColecao && premium == mala.premium && Objects.equals(material, mala.material);
+    }
+
 }

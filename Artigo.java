@@ -1,6 +1,9 @@
+import java.util.Objects;
+
 public class Artigo {
     public enum Condicao {novo, usado}
 
+    private int fiscalUtilizador;
     private Condicao condicao;
     private String estado;
     private int donos;
@@ -12,6 +15,7 @@ public class Artigo {
     private Transportadora transportadora;
 
     public Artigo() {
+        this.fiscalUtilizador = 0;
         this.condicao = Condicao.novo;
         this.estado = "";
         this.donos = 0;
@@ -23,19 +27,8 @@ public class Artigo {
         this.transportadora = new Transportadora();
     }
 
-    public Artigo(String descricao, String marca, String cod, float precoBase, float correcaoPreco, Transportadora transportadora) {
-        this.condicao = Condicao.novo;
-        this.estado = "";
-        this.donos = 1;
-        this.descricao = descricao;
-        this.marca = marca;
-        this.cod = cod;
-        this.precoBase = precoBase;
-        this.correcaoPreco = correcaoPreco;
-        this.transportadora = transportadora;
-    } // novo
-
-    public Artigo(Condicao condicao, String estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, Transportadora transportadora) {
+    public Artigo(Integer fiscalUtilizador, Condicao condicao, String estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, Transportadora transportadora) {
+        this.fiscalUtilizador = fiscalUtilizador;
         this.condicao = condicao;
         this.estado = estado;
         this.donos = donos;
@@ -45,9 +38,10 @@ public class Artigo {
         this.precoBase = precoBase;
         this.correcaoPreco = correcaoPreco;
         this.transportadora = transportadora;
-    } // usado
+    }
 
     public Artigo(Artigo a) {
+        this.fiscalUtilizador = a.getFiscalUtilizador();
         this.condicao = a.getCondicao();
         this.estado = a.getEstado();
         this.donos = a.getDonos();
@@ -57,6 +51,14 @@ public class Artigo {
         this.precoBase = a.getPrecoBase();
         this.correcaoPreco = a.getCorrecaoPreco();
         this.transportadora = a.getTransportadora();
+    }
+
+    public int getFiscalUtilizador() {
+        return fiscalUtilizador;
+    }
+
+    public void setFiscalUtilizador(int fiscalUtilizador) {
+        this.fiscalUtilizador = fiscalUtilizador;
     }
 
     public String getEstado() {
@@ -130,4 +132,27 @@ public class Artigo {
     public void setTransportadora(Transportadora transportadora) {
         this.transportadora = transportadora;
     }
+
+    public Artigo clone() { return new Artigo(this); }
+
+    public String toString() {
+        return "fiscalUtilizador=" + fiscalUtilizador +
+                ", condicao=" + condicao +
+                ", estado='" + estado + '\'' +
+                ", donos=" + donos +
+                ", descricao='" + descricao + '\'' +
+                ", marca='" + marca + '\'' +
+                ", cod='" + cod + '\'' +
+                ", precoBase=" + precoBase +
+                ", correcaoPreco=" + correcaoPreco +
+                ", transportadora=" + transportadora;
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Artigo artigo = (Artigo) o;
+        return fiscalUtilizador == artigo.fiscalUtilizador && donos == artigo.donos && Float.compare(artigo.precoBase, precoBase) == 0 && Float.compare(artigo.correcaoPreco, correcaoPreco) == 0 && condicao == artigo.condicao && Objects.equals(estado, artigo.estado) && Objects.equals(descricao, artigo.descricao) && Objects.equals(marca, artigo.marca) && Objects.equals(cod, artigo.cod) && Objects.equals(transportadora, artigo.transportadora);
+    }
+
 }

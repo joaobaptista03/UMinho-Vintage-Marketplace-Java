@@ -1,6 +1,8 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Encomenda {
     public enum Dimensao {grande, medio, pequeno}
@@ -23,7 +25,9 @@ public class Encomenda {
     }
 
     public Encomenda(List<Artigo> artigos, Dimensao dimensao, float precoFinal, float precoExpedicao, Estado estado, LocalDate dataCriada) {
-        this.artigos = artigos;
+        this.artigos = artigos.stream()
+                .map(a -> a.clone())
+                .collect(Collectors.toList());
         this.dimensao = dimensao;
         this.precoFinal = precoFinal;
         this.precoExpedicao = precoExpedicao;
@@ -41,11 +45,15 @@ public class Encomenda {
     }
 
     public List<Artigo> getArtigos() {
-        return artigos;
+        return artigos.stream()
+                .map(a -> a.clone())
+                .collect(Collectors.toList());
     }
 
     public void setArtigos(List<Artigo> artigos) {
-        this.artigos = artigos;
+        this.artigos = artigos.stream()
+                .map(a -> a.clone())
+                .collect(Collectors.toList());
     }
 
     public Dimensao getDimensao() {
@@ -101,4 +109,29 @@ public class Encomenda {
                 .mapToDouble(a -> getPrecoFinal())
                 .sum();
     }
+
+    public Encomenda clone() {
+        return new Encomenda(this);
+    }
+
+    @Override
+    public String toString() {
+        return "Encomenda{" +
+                "artigos=" + artigos +
+                ", dimensao=" + dimensao +
+                ", precoFinal=" + precoFinal +
+                ", precoExpedicao=" + precoExpedicao +
+                ", estado=" + estado +
+                ", dataCriada=" + dataCriada +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Encomenda encomenda = (Encomenda) o;
+        return Float.compare(encomenda.precoFinal, precoFinal) == 0 && Float.compare(encomenda.precoExpedicao, precoExpedicao) == 0 && Objects.equals(artigos, encomenda.artigos) && dimensao == encomenda.dimensao && estado == encomenda.estado && Objects.equals(dataCriada, encomenda.dataCriada);
+    }
+
 }

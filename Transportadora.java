@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Transportadora {
     private String nome;
 
@@ -19,5 +21,22 @@ public class Transportadora {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Transportadora clone() {
+        return new Transportadora(this);
+    }
+
+    public String toString() {
+        return "Transportadora{" +
+                "nome='" + nome + '\'' +
+                '}';
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transportadora that = (Transportadora) o;
+        return Objects.equals(nome, that.nome);
     }
 }

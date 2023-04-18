@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Sapatilha extends Artigo {
     private int tamanho;
@@ -16,23 +17,14 @@ public class Sapatilha extends Artigo {
         this.premium = false;
     }
 
-    public Sapatilha(String descricao, String marca, String cod, float precoBase, float correcaoPreco, int tamanho, boolean atacadores, String cor, LocalDate lancamento, boolean premium, Transportadora transportadora) {
-        super(descricao, marca, cod, precoBase, correcaoPreco, transportadora);
+    public Sapatilha(int fiscalUtilizador, Condicao condicao, String estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, int tamanho, boolean atacadores, String cor, LocalDate lancamento, boolean premium, Transportadora transportadora) {
+        super(fiscalUtilizador, condicao, estado, donos, descricao, marca, cod, precoBase, correcaoPreco, transportadora);
         this.tamanho = tamanho;
         this.atacadores = atacadores;
         this.cor = cor;
         this.lancamento = lancamento;
         this.premium = premium;
-    } // nova
-
-    public Sapatilha(Artigo.Condicao condicao, String estado, int donos, String descricao, String marca, String ood, float precoBase, float correcaoPreco, int tamanho, boolean atacadores, String cor, LocalDate lancamento, boolean premium, Transportadora transportadora) {
-        super(condicao, estado, donos, descricao, marca, ood, precoBase, correcaoPreco, transportadora);
-        this.tamanho = tamanho;
-        this.atacadores = atacadores;
-        this.cor = cor;
-        this.lancamento = lancamento;
-        this.premium = premium;
-    } // usada
+    }
 
     public Sapatilha(Sapatilha s) {
         super(s);
@@ -80,4 +72,28 @@ public class Sapatilha extends Artigo {
     public void setPremium(boolean premium) {
         this.premium = premium;
     }
+
+    public Sapatilha clone() {
+        return new Sapatilha(this);
+    }
+
+    public String toString() {
+        return "Sapatilha{" +
+                super.toString() +
+                ", tamanho=" + tamanho +
+                ", atacadores=" + atacadores +
+                ", cor='" + cor + '\'' +
+                ", lancamento=" + lancamento +
+                ", premium=" + premium +
+                '}';
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Sapatilha sapatilha = (Sapatilha) o;
+        return tamanho == sapatilha.tamanho && atacadores == sapatilha.atacadores && premium == sapatilha.premium && Objects.equals(cor, sapatilha.cor) && Objects.equals(lancamento, sapatilha.lancamento);
+    }
+
 }

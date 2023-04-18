@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Utilizador {
     private String email;
@@ -25,9 +27,23 @@ public class Utilizador {
         this.nome = nome;
         this.morada = morada;
         this.nrFiscal = nrFiscal;
-        this.vender = vender;
-        this.comprado = comprado;
+        this.vender = vender.stream()
+                .map(a ->a.clone())
+                .collect(Collectors.toList());;
+        this.comprado = comprado.stream()
+                .map(a ->a.clone())
+                .collect(Collectors.toList());
         this.totVendas = totVendas;
+    }
+
+    public Utilizador(Utilizador u) {
+        this.email = u.getEmail();
+        this.nome = u.getNome();
+        this.morada = u.getMorada();
+        this.nrFiscal = u.getNrFiscal();
+        this.vender = u.getVender();
+        this.comprado = u.getComprado();
+        this.totVendas = u.getTotVendas();
     }
 
     public String getEmail() {
@@ -63,19 +79,27 @@ public class Utilizador {
     }
 
     public List<Artigo> getVender() {
-        return vender;
+        return vender.stream()
+                .map(a ->a.clone())
+                .collect(Collectors.toList());
     }
 
     public void setVender(List<Artigo> vender) {
-        this.vender = vender;
+        this.vender = vender.stream()
+                .map(a ->a.clone())
+                .collect(Collectors.toList());
     }
 
     public List<Artigo> getComprado() {
-        return comprado;
+        return comprado.stream()
+                .map(a ->a.clone())
+                .collect(Collectors.toList());
     }
 
     public void setComprado(List<Artigo> comprado) {
-        this.comprado = comprado;
+        this.comprado = comprado.stream()
+                .map(a ->a.clone())
+                .collect(Collectors.toList());;
     }
 
     public float getTotVendas() {
@@ -85,4 +109,28 @@ public class Utilizador {
     public void setTotVendas(float totVendas) {
         this.totVendas = totVendas;
     }
+
+    public Utilizador clone() {
+        return new Utilizador(this);
+    }
+
+    public String toString() {
+        return "Utilizador{" +
+                "email='" + email + '\'' +
+                ", nome='" + nome + '\'' +
+                ", morada='" + morada + '\'' +
+                ", nrFiscal=" + nrFiscal +
+                ", vender=" + vender +
+                ", comprado=" + comprado +
+                ", totVendas=" + totVendas +
+                '}';
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Utilizador that = (Utilizador) o;
+        return nrFiscal == that.nrFiscal && Float.compare(that.totVendas, totVendas) == 0 && Objects.equals(email, that.email) && Objects.equals(nome, that.nome) && Objects.equals(morada, that.morada) && Objects.equals(vender, that.vender) && Objects.equals(comprado, that.comprado);
+    }
+
 }

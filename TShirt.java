@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class TShirt extends Artigo {
     public enum Tamanho {S, M, L, XL}
     public enum Padrao {liso, riscas, palmeiras}
@@ -11,17 +13,11 @@ public class TShirt extends Artigo {
         this.padrao = Padrao.liso;
     }
 
-    public TShirt(String descricao, String marca, String cod, float precoBase, float correcaoPreco, Tamanho tamanho, Padrao padrao, Transportadora transportadora) {
-        super(descricao, marca, cod, precoBase, correcaoPreco, transportadora);
+    public TShirt(int fiscalUtilizador, Condicao condicao, String estado, int donos, String descricao, String marca, String ood, float precoBase, float correcaoPreco, Tamanho tamanho, Padrao padrao, Transportadora transportadora) {
+        super(fiscalUtilizador, condicao, estado, donos, descricao, marca, ood, precoBase, correcaoPreco, transportadora);
         this.tamanho = tamanho;
         this.padrao = padrao;
-    } // nova
-
-    public TShirt(Condicao condicao, String estado, int donos, String descricao, String marca, String ood, float precoBase, float correcaoPreco, Tamanho tamanho, Padrao padrao, Transportadora transportadora) {
-        super(condicao, estado, donos, descricao, marca, ood, precoBase, correcaoPreco, transportadora);
-        this.tamanho = tamanho;
-        this.padrao = padrao;
-    } // usada
+    }
 
     public TShirt(TShirt t) {
         super(t);
@@ -44,4 +40,25 @@ public class TShirt extends Artigo {
     public void setPadrao(Padrao padrao) {
         this.padrao = padrao;
     }
+
+    public TShirt clone() {
+        return new TShirt(this);
+    }
+
+    public String toString() {
+        return "TShirt{" +
+                super.toString() +
+                ", tamanho=" + tamanho +
+                ", padrao=" + padrao +
+                '}';
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        TShirt tShirt = (TShirt) o;
+        return tamanho == tShirt.tamanho && padrao == tShirt.padrao;
+    }
+
 }
