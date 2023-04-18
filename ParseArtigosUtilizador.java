@@ -1,13 +1,15 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ParseArtigosUtilizador {
-    public static List<Artigo> venda(List<Artigo> marketplace, int nrFiscal){
-        List<Artigo> artigos = marketplace.stream()
-                .filter(a -> a.getFiscalUtilizador() == nrFiscal)
-                .map(a -> a.clone())
-                .collect(Collectors.toList());
+    public static Map<String, Artigo> venda(Map<String, Artigo> marketplace, int nrFiscal){
+        Map<String, Artigo> artigos = new HashMap<>();
+        for(Artigo a : marketplace.values()) {
+            if (a.getFiscalUtilizador() == nrFiscal) artigos.put(a.getCod(), a.clone());
+        }
 
         return artigos;
     }

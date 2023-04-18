@@ -1,21 +1,29 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ParseArtigos {
-    public static List<Artigo> get() {
-        List<Artigo> artigos = new ArrayList<>();
+    public static Map<String, Artigo> get() {
+        Map<String, Artigo> artigos = new HashMap<>();
         try {
             File input = new File("artigos_txt");
             Scanner reader = new Scanner(input);
             while (reader.hasNextLine()) {
                 String line = reader.nextLine();
                 String[] parse = line.split(";");
-                if (parse[0].equalsIgnoreCase("TShirt")) artigos.add(ParseTShirt.parse(parse));
-                else if (parse[0].equalsIgnoreCase("Mala")) artigos.add(ParseMala.parse(parse));
-                else if (parse[0].equalsIgnoreCase("Sapatilha")) artigos.add(ParseSapatilha.parse(parse));
+                if (parse[0].equalsIgnoreCase("TShirt")) {
+                    TShirt temp = ParseTShirt.parse(parse);
+                    artigos.put(temp.getCod(), temp);
+                }
+                else if (parse[0].equalsIgnoreCase("Mala")) {
+                    Mala temp = ParseMala.parse(parse);
+                    artigos.put(temp.getCod(), temp);
+                }
+                else if (parse[0].equalsIgnoreCase("Sapatilha")) {
+                    Sapatilha temp = ParseSapatilha.parse(parse);
+                    artigos.put(temp.getCod(), temp);
+                }
             }
             reader.close();
         } catch (FileNotFoundException e) {

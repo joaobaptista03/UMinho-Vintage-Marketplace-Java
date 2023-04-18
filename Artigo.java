@@ -9,7 +9,7 @@ public class Artigo {
     private int donos;
     private String descricao;
     private String marca;
-    private String cod; // alfanumérico
+    private String cod;
     private float precoBase;
     private float correcaoPreco;
     private Transportadora transportadora;

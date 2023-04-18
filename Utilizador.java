@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Utilizador {
@@ -8,8 +6,8 @@ public class Utilizador {
     private String nome;
     private String morada;
     private int nrFiscal;
-    private List<Artigo> vender;
-    private List<Artigo> comprado;
+    private Map<String, Artigo> vender;
+    private Map<String, Artigo> comprado;
     private float totVendas;
 
     public Utilizador() {
@@ -17,22 +15,20 @@ public class Utilizador {
         this.nome = "";
         this.morada = "";
         this.nrFiscal = 0;
-        this.vender = new ArrayList<Artigo>();
-        this.comprado = new ArrayList<Artigo>();
+        this.vender = new HashMap<String, Artigo>();
+        this.comprado = new HashMap<String, Artigo>();
         this.totVendas = 0;
     }
 
-    public Utilizador(String email, String nome, String morada, int nrFiscal, List<Artigo> vender, List<Artigo> comprado, float totVendas) {
+    public Utilizador(String email, String nome, String morada, int nrFiscal, Map<String, Artigo> vender, Map<String, Artigo> comprado, float totVendas) {
         this.email = email;
         this.nome = nome;
         this.morada = morada;
         this.nrFiscal = nrFiscal;
-        this.vender = vender.stream()
-                .map(a ->a.clone())
-                .collect(Collectors.toList());;
-        this.comprado = comprado.stream()
-                .map(a ->a.clone())
-                .collect(Collectors.toList());
+        this.vender = new HashMap<>();
+            for (Artigo a : vender.values()) this.vender.put(a.getCod(), a.clone());
+        this.comprado = new HashMap<>();
+            for (Artigo a : comprado.values()) this.comprado.put(a.getCod(), a.clone());
         this.totVendas = totVendas;
     }
 
@@ -78,28 +74,28 @@ public class Utilizador {
         this.nrFiscal = nrFiscal;
     }
 
-    public List<Artigo> getVender() {
-        return vender.stream()
-                .map(a ->a.clone())
-                .collect(Collectors.toList());
+    public Map<String, Artigo> getVender() {
+        Map<String, Artigo> newVender = new HashMap<>();
+        for (Artigo a : this.vender.values()) newVender.put(a.getCod(), a.clone());
+
+        return newVender;
     }
 
-    public void setVender(List<Artigo> vender) {
-        this.vender = vender.stream()
-                .map(a ->a.clone())
-                .collect(Collectors.toList());
+    public void setVender(Map<String, Artigo> vender) {
+        this.vender = new HashMap<>();
+        for (Artigo a : vender.values()) this.vender.put(a.getCod(), a.clone());
     }
 
-    public List<Artigo> getComprado() {
-        return comprado.stream()
-                .map(a ->a.clone())
-                .collect(Collectors.toList());
+    public Map<String, Artigo> getComprado() {
+        Map<String, Artigo> newComprado = new HashMap<>();
+        for (Artigo a : this.comprado.values()) newComprado.put(a.getCod(), a.clone());
+
+        return newComprado;
     }
 
-    public void setComprado(List<Artigo> comprado) {
-        this.comprado = comprado.stream()
-                .map(a ->a.clone())
-                .collect(Collectors.toList());;
+    public void setComprado(Map<String, Artigo> comprado) {
+        this.comprado = new HashMap<>();
+        for (Artigo a : comprado.values()) this.comprado.put(a.getCod(), a.clone());
     }
 
     public float getTotVendas() {
