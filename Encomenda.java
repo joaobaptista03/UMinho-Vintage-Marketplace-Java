@@ -97,7 +97,7 @@ public class Encomenda {
     }
 
     public void addArtigo(Artigo a) {
-        this.artigos.add(a);
+        this.artigos.add(a.clone());
     }
 
     public void remArtigo(String cod) {

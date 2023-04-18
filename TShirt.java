@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class TShirt extends Artigo {
     public enum Tamanho {S, M, L, XL}
     public enum Padrao {liso, riscas, palmeiras}
