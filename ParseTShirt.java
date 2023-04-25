@@ -18,7 +18,7 @@ public class ParseTShirt {
         TShirt ts1 = new TShirt(
                 Integer.parseInt(parse[1]),
                 condicao,
-                parse[3],
+                Float.parseFloat(parse[3]),
                 Integer.parseInt(parse[4]),
                 parse[5],
                 parse[6],

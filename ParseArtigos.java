@@ -1,12 +1,14 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class ParseArtigos {
     public static Map<String, Artigo> get() {
         Map<String, Artigo> artigos = new HashMap<>();
         try {
-            File input = new File("artigos_txt");
+            File input = new File("input/artigos_txt");
             Scanner reader = new Scanner(input);
             while (reader.hasNextLine()) {
                 String line = reader.nextLine();

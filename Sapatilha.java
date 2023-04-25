@@ -1,11 +1,10 @@
-import java.time.LocalDate;
 import java.util.Objects;
 
 public class Sapatilha extends Artigo {
     private int tamanho;
     private boolean atacadores;
     private String cor;
-    private LocalDate lancamento;
+    private int anoColecao;
     private boolean premium;
 
     public Sapatilha() {
@@ -13,16 +12,16 @@ public class Sapatilha extends Artigo {
         this.tamanho = 0;
         this.atacadores = false;
         this.cor = "";
-        this.lancamento = LocalDate.now();
+        this.anoColecao = 0;
         this.premium = false;
     }
 
-    public Sapatilha(int fiscalUtilizador, Condicao condicao, String estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, int tamanho, boolean atacadores, String cor, LocalDate lancamento, boolean premium, Transportadora transportadora) {
+    public Sapatilha(int fiscalUtilizador, Condicao condicao, float estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, int tamanho, boolean atacadores, String cor, int anoColecao, boolean premium, Transportadora transportadora) {
         super(fiscalUtilizador, condicao, estado, donos, descricao, marca, cod, precoBase, correcaoPreco, transportadora);
         this.tamanho = tamanho;
         this.atacadores = atacadores;
         this.cor = cor;
-        this.lancamento = lancamento;
+        this.anoColecao = anoColecao;
         this.premium = premium;
     }
 
@@ -31,7 +30,7 @@ public class Sapatilha extends Artigo {
         this.tamanho = s.getTamanho();
         this.atacadores = s.isAtacadores();
         this.cor = s.getCor();
-        this.lancamento = s.getLancamento();
+        this.anoColecao = s.getAnoColecao();
         this.premium = s.isPremium();
     }
 
@@ -57,12 +56,12 @@ public class Sapatilha extends Artigo {
         this.cor = cor;
     }
 
-    public LocalDate getLancamento() {
-        return lancamento;
+    public int getAnoColecao() {
+        return anoColecao;
     }
 
-    public void setLancamento(LocalDate lancamento) {
-        this.lancamento = lancamento;
+    public void setAnoColecao(int anoColecao) {
+        this.anoColecao = anoColecao;
     }
 
     public boolean isPremium() {
@@ -71,6 +70,11 @@ public class Sapatilha extends Artigo {
 
     public void setPremium(boolean premium) {
         this.premium = premium;
+    }
+
+    public float getPrecoTotal() {
+        if (this.premium) return (this.getPrecoBase() + this.getCorrecaoPreco());
+        return (this.getPrecoBase() - this.getCorrecaoPreco());
     }
 
     public Sapatilha clone() {
@@ -83,7 +87,7 @@ public class Sapatilha extends Artigo {
                 ", tamanho=" + tamanho +
                 ", atacadores=" + atacadores +
                 ", cor='" + cor + '\'' +
-                ", lancamento=" + lancamento +
+                ", anoColecao=" + anoColecao +
                 ", premium=" + premium +
                 '}';
     }
@@ -93,7 +97,7 @@ public class Sapatilha extends Artigo {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Sapatilha sapatilha = (Sapatilha) o;
-        return tamanho == sapatilha.tamanho && atacadores == sapatilha.atacadores && premium == sapatilha.premium && Objects.equals(cor, sapatilha.cor) && Objects.equals(lancamento, sapatilha.lancamento);
+        return tamanho == sapatilha.tamanho && atacadores == sapatilha.atacadores && premium == sapatilha.premium && Objects.equals(cor, sapatilha.cor) && anoColecao == sapatilha.getAnoColecao();
     }
 
 }

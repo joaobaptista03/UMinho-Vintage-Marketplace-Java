@@ -16,7 +16,7 @@ public class Mala extends Artigo {
         this.premium = false;
     }
 
-    public Mala(int fiscalUtilizador, Condicao condicao, String estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, float comprimento, float largura, float altura, String material, int anoColecao, boolean premium, Transportadora transportadora) {
+    public Mala(int fiscalUtilizador, Condicao condicao, float estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, float comprimento, float largura, float altura, String material, int anoColecao, boolean premium, Transportadora transportadora) {
         super(fiscalUtilizador, condicao, estado, donos, descricao, marca, cod, precoBase, correcaoPreco, transportadora);
         this.comprimento = comprimento;
         this.largura = largura;
@@ -82,14 +82,19 @@ public class Mala extends Artigo {
         this.premium = premium;
     }
 
+    public float getPrecoTotal() {
+        if (this.premium) return (this.getPrecoBase() + this.getCorrecaoPreco());
+        return (this.getPrecoBase() - this.getCorrecaoPreco());
+    }
+
     public Mala clone() {
         return new Mala(this);
     }
 
     public String toString() {
-        return "Mala{" +
+        return "Mala{\n" +
                 super.toString() +
-                ", comprimento=" + comprimento +
+                "\n     comprimento=" + comprimento +
                 ", largura=" + largura +
                 ", altura=" + altura +
                 ", material='" + material + '\'' +

@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-
 public class ParseSapatilha {
     public static Sapatilha parse(String[] parse) {
         Artigo.Condicao condicao;
@@ -9,7 +7,7 @@ public class ParseSapatilha {
         Sapatilha s1 = new Sapatilha(
                 Integer.parseInt(parse[1]),
                 condicao,
-                parse[3],
+                Float.parseFloat(parse[3]),
                 Integer.parseInt(parse[4]),
                 parse[5],
                 parse[6],
@@ -19,7 +17,7 @@ public class ParseSapatilha {
                 Integer.parseInt(parse[10]),
                 parse[11].equalsIgnoreCase("true"),
                 parse[12],
-                LocalDate.parse(parse[13]),
+                Integer.parseInt(parse[13]),
                 parse[14].equalsIgnoreCase("true"),
                 new Transportadora(parse[15])
         );

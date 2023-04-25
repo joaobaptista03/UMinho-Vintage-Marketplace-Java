@@ -1,6 +1,9 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class Utilizador {
+    private int codigo;
     private String email;
     private String nome;
     private String morada;
@@ -10,6 +13,7 @@ public class Utilizador {
     private float totVendas;
 
     public Utilizador() {
+        this.codigo = 0;
         this.email = "";
         this.nome = "";
         this.morada = "";
@@ -19,7 +23,8 @@ public class Utilizador {
         this.totVendas = 0;
     }
 
-    public Utilizador(String email, String nome, String morada, int nrFiscal, Map<String, Artigo> vender, Map<String, Artigo> comprado, float totVendas) {
+    public Utilizador(int codigo, String email, String nome, String morada, int nrFiscal, Map<String, Artigo> vender, Map<String, Artigo> comprado, float totVendas) {
+        this.codigo = codigo;
         this.email = email;
         this.nome = nome;
         this.morada = morada;
@@ -32,6 +37,7 @@ public class Utilizador {
     }
 
     public Utilizador(Utilizador u) {
+        this.codigo = u.getCodigo();
         this.email = u.getEmail();
         this.nome = u.getNome();
         this.morada = u.getMorada();
@@ -39,6 +45,14 @@ public class Utilizador {
         this.vender = u.getVender();
         this.comprado = u.getComprado();
         this.totVendas = u.getTotVendas();
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getEmail() {
@@ -115,7 +129,7 @@ public class Utilizador {
                 ", nome='" + nome + '\'' +
                 ", morada='" + morada + '\'' +
                 ", nrFiscal=" + nrFiscal +
-                ", vender=" + vender +
+                ",\n     vender=\n            " + vender +
                 ", comprado=" + comprado +
                 ", totVendas=" + totVendas +
                 '}';

@@ -11,8 +11,8 @@ public class TShirt extends Artigo {
         this.padrao = Padrao.liso;
     }
 
-    public TShirt(int fiscalUtilizador, Condicao condicao, String estado, int donos, String descricao, String marca, String ood, float precoBase, float correcaoPreco, Tamanho tamanho, Padrao padrao, Transportadora transportadora) {
-        super(fiscalUtilizador, condicao, estado, donos, descricao, marca, ood, precoBase, correcaoPreco, transportadora);
+    public TShirt(int fiscalUtilizador, Condicao condicao, float estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, Tamanho tamanho, Padrao padrao, Transportadora transportadora) {
+        super(fiscalUtilizador, condicao, estado, donos, descricao, marca, cod, precoBase, correcaoPreco, transportadora);
         this.tamanho = tamanho;
         this.padrao = padrao;
     }
@@ -38,6 +38,8 @@ public class TShirt extends Artigo {
     public void setPadrao(Padrao padrao) {
         this.padrao = padrao;
     }
+
+    public float getPrecoTotal() { return this.getPrecoBase() - this.getCorrecaoPreco(); };
 
     public TShirt clone() {
         return new TShirt(this);

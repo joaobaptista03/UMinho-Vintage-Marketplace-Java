@@ -3,13 +3,14 @@ import java.util.HashMap;
 public class ParseNewUtilizador {
     public static Utilizador parse(String[] parse) {
         return new Utilizador(
-                parse[0],
+                Integer.parseInt(parse[0]),
                 parse[1],
                 parse[2],
-                Integer.parseInt(parse[3]),
+                parse[3],
+                Integer.parseInt(parse[4]),
                 new HashMap<>(),
                 new HashMap<>(),
-                Float.parseFloat(parse[4])
+                Float.parseFloat(parse[5])
         );
     }
 }
