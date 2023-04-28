@@ -8,7 +8,7 @@ public class ParseArtigos {
     public static Map<String, Artigo> get() {
         Map<String, Artigo> artigos = new HashMap<>();
         try {
-            File input = new File("input/artigos_txt");
+            File input = new File("input/artigos.txt");
             Scanner reader = new Scanner(input);
             while (reader.hasNextLine()) {
                 String line = reader.nextLine();

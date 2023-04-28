@@ -8,7 +8,7 @@ public class ParseUtilizadores {
     public static Map<Integer, Utilizador> get(Map<String, Artigo> marketplace) {
         Map<Integer, Utilizador> utilizadores = new HashMap<>();
         try {
-            File input = new File("input/users_txt");
+            File input = new File("input/utilizadores.txt");
             Scanner reader = new Scanner(input);
             while (reader.hasNextLine()) {
                 String line = reader.nextLine();
