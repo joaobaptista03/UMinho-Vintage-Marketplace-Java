@@ -1,0 +1,1 @@
+Utilizador;1234;joao@gmail.com;Joao;Rua;246370998;Vender: [543535, 453u543, tregtr4];[];453.0Utilizador;5678;joana@gmail.com;Joana;Av;543536365;Vender: [];[];451.0
