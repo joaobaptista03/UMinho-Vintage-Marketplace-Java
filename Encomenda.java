@@ -12,23 +12,20 @@ public class Encomenda {
 
     private List<String> artigos;
     private Dimensao dimensao;
-    private float precoExpedicao;
     private Estado estado;
     private LocalDate dataCriada;
 
     public Encomenda() {
         this.artigos = new ArrayList<String>();
         this.dimensao = Dimensao.pequeno;
-        this.precoExpedicao = 0;
         this.estado = Estado.pendente;
         this.dataCriada = LocalDate.now();
     }
 
-    public Encomenda(List<String> artigos, Dimensao dimensao, float precoExpedicao, Estado estado, LocalDate dataCriada) {
+    public Encomenda(List<String> artigos, Dimensao dimensao, Estado estado, LocalDate dataCriada) {
         this.artigos = new ArrayList<>();
-        this.artigos.addAll(artigos);
+            this.artigos.addAll(artigos);
         this.dimensao = dimensao;
-        this.precoExpedicao = precoExpedicao;
         this.estado = estado;
         this.dataCriada = dataCriada;
     }
@@ -36,14 +33,13 @@ public class Encomenda {
     public Encomenda(Encomenda e) {
         this.artigos = e.getArtigos();
         this.dimensao = e.getDimensao();
-        this.precoExpedicao = e.getPrecoExpedicao();
         this.estado = e.getEstado();
         this.dataCriada = e.getDataCriada();
     }
 
     public List<String> getArtigos() {
         List<String> new_artigos = new ArrayList<>();
-        new_artigos.addAll(this.artigos);
+            new_artigos.addAll(this.artigos);
         return new_artigos;
     }
 
@@ -58,14 +54,6 @@ public class Encomenda {
 
     public void setDimensao(Dimensao dimensao) {
         this.dimensao = dimensao;
-    }
-
-    public float getPrecoExpedicao() {
-        return precoExpedicao;
-    }
-
-    public void setPrecoExpedicao(float precoExpedicao) {
-        this.precoExpedicao = precoExpedicao;
     }
 
     public Estado getEstado() {
@@ -110,7 +98,7 @@ public class Encomenda {
 
     @Override
     public String toString() {
-        return "Encomenda;" + artigos + ";" + dimensao + ";" + precoExpedicao + ";" + estado + ";" + dataCriada;
+        return "Encomenda;" + artigos + ";" + dimensao + ";" + estado + ";" + dataCriada;
     }
 
     @Override
@@ -118,6 +106,6 @@ public class Encomenda {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Encomenda encomenda = (Encomenda) o;
-        return Float.compare(encomenda.precoExpedicao, precoExpedicao) == 0 && Objects.equals(artigos, encomenda.artigos) && dimensao == encomenda.dimensao && estado == encomenda.estado && Objects.equals(dataCriada, encomenda.dataCriada);
+        return Objects.equals(artigos, encomenda.artigos) && dimensao == encomenda.dimensao && estado == encomenda.estado && Objects.equals(dataCriada, encomenda.dataCriada);
     }
 }

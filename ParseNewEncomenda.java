@@ -22,9 +22,8 @@ public class ParseNewEncomenda {
         return new Encomenda(
             artigos,
             dimensao,
-            Float.parseFloat(parse[nrArtigos + 1]),
             estado,
-            LocalDate.parse(parse[nrArtigos + 3])
+            LocalDate.parse(parse[nrArtigos + 2])
         );
     }
 }
