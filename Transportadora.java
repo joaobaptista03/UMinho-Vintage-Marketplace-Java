@@ -28,9 +28,7 @@ public class Transportadora {
     }
 
     public String toString() {
-        return "Transportadora{" +
-                "nome='" + nome + '\'' +
-                '}';
+        return "Transportadora;" + nome + "\n";
     }
 
     public boolean equals(Object o) {

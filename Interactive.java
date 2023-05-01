@@ -14,12 +14,15 @@ public class Interactive {
 
             if (parse_command.length == 1) {
                 if (line.equalsIgnoreCase("exit")) return;
-                else if (line.equalsIgnoreCase("--help")) {
-                    System.out.println("Criar um novo utilizador -> addUtilizador <email>;<nome>;<morada>;<nrFiscal>;<totVendas>");
 
-                    System.out.println("\nCriar uma nova Mala -> addMala <fiscalUtilizador>;<condicao>;<estado>;<nrDonos>;<descricao>;<marca>;<cod>;<precoBase>;<correcaoPreco>;<transportadora>;<comprimento>;<largura>;<altura>;<material>;<anoColecao>;<premium (true/false)>.");
-                    System.out.println("Criar uma nova TShirt -> addTShirt <fiscalUtilizador>;<condicao>;<estado>;<nrDonos>;<descricao>;<marca>;<cod>;<precoBase>;<correcaoPreco>;<transportadora>;<tamanho>;<padrao>.");
-                    System.out.println("Criar uma nova Sapatilha -> addSapatilha <fiscalUtilizador>;<condicao>;<estado>;<nrDonos>;<descricao>;<marca>;<cod>;<precoBase>;<correcaoPreco>;<transportadora>;<tamanho>;<atacadores (true/false)>;<cor>;<lancamento (2023-12-08)>;<premium (true/false)>.");
+                if (line.equalsIgnoreCase("save")) Save.now(marketplace, utilizadores, encomendas, data, transportadoras);
+
+                else if (line.equalsIgnoreCase("--help")) {
+                    System.out.println("Criar um novo utilizador -> addUtilizador <codigo>;<email>;<nome>;<morada>;<nrFiscal>;<totVendas>");
+
+                    System.out.println("\nCriar uma nova Mala -> addMala <codUtilizador>;<condicao>;<estado>;<nrDonos>;<descricao>;<marca>;<cod>;<precoBase>;<correcaoPreco>;<transportadora>;<comprimento>;<largura>;<altura>;<material>;<anoColecao>;<premium (true/false)>.");
+                    System.out.println("Criar uma nova TShirt -> addTShirt <codUtilizador>;<condicao>;<estado>;<nrDonos>;<descricao>;<marca>;<cod>;<precoBase>;<correcaoPreco>;<transportadora>;<tamanho>;<padrao>.");
+                    System.out.println("Criar uma nova Sapatilha -> addSapatilha <codUtilizador>;<condicao>;<estado>;<nrDonos>;<descricao>;<marca>;<cod>;<precoBase>;<correcaoPreco>;<transportadora>;<tamanho>;<atacadores (true/false)>;<cor>;<anoLancamento>;<premium (true/false)>.");
 
                     System.out.println("\nCriar uma nova Transportadora -> addTransportadora <nome>");
 
@@ -37,22 +40,22 @@ public class Interactive {
 
                 if (parse_command[0].equalsIgnoreCase("addUtilizador")) {
                     Utilizador temp = ParseNewUtilizador.parse(parse2).clone();
-                    utilizadores.put(temp.getNrFiscal(), temp);
+                    utilizadores.put(temp.getCodigo(), temp);
                 }
                 else if (parse_command[0].equalsIgnoreCase("addMala")) {
                     Mala temp = ParseMala.parse(parse).clone();
                     marketplace.put(temp.getCod(), temp);
-                    utilizadores.get(temp.getCodUtilizador()).getVender().put(temp.getCod(), temp);
+                    utilizadores.get(temp.getCodUtilizador()).getVender().add(temp.getCod());
                 }
                 else if (parse_command[0].equalsIgnoreCase("addTShirt")) {
                     TShirt temp = ParseTShirt.parse(parse).clone();
                     marketplace.put(temp.getCod(), temp);
-                    utilizadores.get(temp.getCodUtilizador()).getVender().put(temp.getCod(), temp);
+                    utilizadores.get(temp.getCodUtilizador()).getVender().add(temp.getCod());
                 }
                 else if (parse_command[0].equalsIgnoreCase("addSapatilha")) {
                     Sapatilha temp = ParseSapatilha.parse(parse).clone();
                     marketplace.put(temp.getCod(), temp);
-                    utilizadores.get(temp.getCodUtilizador()).getVender().put(temp.getCod(), temp);
+                    utilizadores.get(temp.getCodUtilizador()).getVender().add(temp.getCod());
                 }
                 else if (parse_command[0].equalsIgnoreCase("addTransportadora")) {
                     Transportadora temp = ParseNewTransportadora.parse(parse).clone();

@@ -136,16 +136,7 @@ public class Artigo {
     public Artigo clone() { return new Artigo(this); }
 
     public String toString() {
-        return "     codUtilizador=" + codUtilizador +
-                ", condicao=" + condicao +
-                ", estado='" + estado + '\'' +
-                ", donos=" + donos +
-                ", descricao='" + descricao + '\'' +
-                ", marca='" + marca + '\'' +
-                ", cod='" + cod + '\'' +
-                ", precoBase=" + precoBase +
-                ", correcaoPreco=" + correcaoPreco +
-                ", transportadora=" + transportadora;
+        return codUtilizador + ";" + condicao + ";" + estado + ";" + donos + ";" + descricao + ";" + marca + ";" + cod + ";" + precoBase + ";" + correcaoPreco + ";" + transportadora + "\n";
     }
 
     public boolean equals(Object o) {

@@ -116,14 +116,7 @@ public class Encomenda {
 
     @Override
     public String toString() {
-        return "Encomenda{" +
-                "artigos=" + artigos +
-                ", dimensao=" + dimensao +
-                ", precoFinal=" + precoFinal +
-                ", precoExpedicao=" + precoExpedicao +
-                ", estado=" + estado +
-                ", dataCriada=" + dataCriada +
-                '}';
+        return "Encomenda;" + ";" + artigos + ";" + dimensao + ";" + precoFinal + ";" + precoExpedicao + ";" + estado + ";" + dataCriada + "\n";
     }
 
     @Override

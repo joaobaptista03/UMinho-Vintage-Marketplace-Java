@@ -1,5 +1,5 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Utilizador {
@@ -8,8 +8,8 @@ public class Utilizador {
     private String nome;
     private String morada;
     private int nrFiscal;
-    private Map<String, Artigo> vender;
-    private Map<String, Artigo> comprado;
+    private List<String> vender;
+    private List<String> comprado;
     private float totVendas;
 
     public Utilizador() {
@@ -18,21 +18,21 @@ public class Utilizador {
         this.nome = "";
         this.morada = "";
         this.nrFiscal = 0;
-        this.vender = new HashMap<String, Artigo>();
-        this.comprado = new HashMap<String, Artigo>();
+        this.vender = new ArrayList<>();
+        this.comprado = new ArrayList<>();
         this.totVendas = 0;
     }
 
-    public Utilizador(int codigo, String email, String nome, String morada, int nrFiscal, Map<String, Artigo> vender, Map<String, Artigo> comprado, float totVendas) {
+    public Utilizador(int codigo, String email, String nome, String morada, int nrFiscal, List<String> vender, List<String>  comprado, float totVendas) {
         this.codigo = codigo;
         this.email = email;
         this.nome = nome;
         this.morada = morada;
         this.nrFiscal = nrFiscal;
-        this.vender = new HashMap<>();
-            for (Artigo a : vender.values()) this.vender.put(a.getCod(), a.clone());
-        this.comprado = new HashMap<>();
-            for (Artigo a : comprado.values()) this.comprado.put(a.getCod(), a.clone());
+        this.vender = new ArrayList<>();
+            for (String a : vender) this.vender.add(a);
+        this.comprado = new ArrayList<>();
+        for (String a : comprado) this.comprado.add(a);
         this.totVendas = totVendas;
     }
 
@@ -87,28 +87,28 @@ public class Utilizador {
         this.nrFiscal = nrFiscal;
     }
 
-    public Map<String, Artigo> getVender() {
-        Map<String, Artigo> newVender = new HashMap<>();
-        for (Artigo a : this.vender.values()) newVender.put(a.getCod(), a.clone());
+    public List<String> getVender() {
+        List<String> newVender = new ArrayList<>();
+        for (String a : this.vender) newVender.add(a);
 
         return newVender;
     }
 
-    public void setVender(Map<String, Artigo> vender) {
-        this.vender = new HashMap<>();
-        for (Artigo a : vender.values()) this.vender.put(a.getCod(), a.clone());
+    public void setVender(List<String> vender) {
+        this.vender = new ArrayList<>();
+        for (String a : vender) this.vender.add(a);
     }
 
-    public Map<String, Artigo> getComprado() {
-        Map<String, Artigo> newComprado = new HashMap<>();
-        for (Artigo a : this.comprado.values()) newComprado.put(a.getCod(), a.clone());
+    public List<String> getComprado() {
+        List<String> newComprado = new ArrayList<>();
+        for (String a : this.comprado) newComprado.add(a);
 
         return newComprado;
     }
 
-    public void setComprado(Map<String, Artigo> comprado) {
-        this.comprado = new HashMap<>();
-        for (Artigo a : comprado.values()) this.comprado.put(a.getCod(), a.clone());
+    public void setComprado(List<String> comprado) {
+        this.comprado = new ArrayList<>();
+        for (String a : comprado) this.comprado.add(a);
     }
 
     public float getTotVendas() {
@@ -124,15 +124,7 @@ public class Utilizador {
     }
 
     public String toString() {
-        return "Utilizador{" +
-                "email='" + email + '\'' +
-                ", nome='" + nome + '\'' +
-                ", morada='" + morada + '\'' +
-                ", nrFiscal=" + nrFiscal +
-                ",\n     vender=\n            " + vender +
-                ", comprado=" + comprado +
-                ", totVendas=" + totVendas +
-                '}';
+        return "Utilizador;" + codigo + ";" + email + ";" + nome + ";" + morada + ";" + nrFiscal + ";" + "Vender: " + vender + ";" + comprado + ";" + totVendas + "\n";
     }
 
     public boolean equals(Object o) {

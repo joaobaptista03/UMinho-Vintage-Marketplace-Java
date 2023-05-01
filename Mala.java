@@ -16,8 +16,8 @@ public class Mala extends Artigo {
         this.premium = false;
     }
 
-    public Mala(int fiscalUtilizador, Condicao condicao, float estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, float comprimento, float largura, float altura, String material, int anoColecao, boolean premium, Transportadora transportadora) {
-        super(fiscalUtilizador, condicao, estado, donos, descricao, marca, cod, precoBase, correcaoPreco, transportadora);
+    public Mala(int codUtilizador, Condicao condicao, float estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, Transportadora transportadora, float comprimento, float largura, float altura, String material, int anoColecao, boolean premium) {
+        super(codUtilizador, condicao, estado, donos, descricao, marca, cod, precoBase, correcaoPreco, transportadora);
         this.comprimento = comprimento;
         this.largura = largura;
         this.altura = altura;
@@ -92,15 +92,7 @@ public class Mala extends Artigo {
     }
 
     public String toString() {
-        return "Mala{\n" +
-                super.toString() +
-                "\n     comprimento=" + comprimento +
-                ", largura=" + largura +
-                ", altura=" + altura +
-                ", material='" + material + '\'' +
-                ", anoColecao=" + anoColecao +
-                ", premium=" + premium +
-                '}';
+        return "Mala;" + super.toString() + ";" + comprimento + ";" + largura + ";" + altura + ";" + material + ";" + anoColecao + ";" + premium + "\n";
     }
 
     public boolean equals(Object o) {
