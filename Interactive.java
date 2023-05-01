@@ -27,7 +27,7 @@ public class Interactive {
                     System.out.println("\nCriar uma nova Transportadora -> addTransportadora <nome>");
 
                     System.out.println("\nDepois de todos os artigos e utilizadores adicionados, pode criar uma nova Encomenda.");
-                    System.out.println("Criar uma nova Encomenda -> addEncomenda <nrArtigos>;<codArtigo1>;<codArtigoN>;<dimensao>;<precoFinal>;<precoExpedicao>;<estado>;<dataCriada>");
+                    System.out.println("Criar uma nova Encomenda -> addEncomenda <nrArtigos>;<codArtigo1>;<codArtigoN>;<precoExpedicao>;<estado>;<dataCriada>");
 
                     System.out.println("\nFinalmente, pode avançar no tempo!");
                     System.out.println("Avançar no tempo -> mudarData <nrDias>");
@@ -58,7 +58,7 @@ public class Interactive {
                     utilizadores.get(temp.getCodUtilizador()).getVender().add(temp.getCod());
                 }
                 else if (parse_command[0].equalsIgnoreCase("addTransportadora")) {
-                    Transportadora temp = ParseNewTransportadora.parse(parse).clone();
+                    Transportadora temp = ParseNewTransportadora.parse(parse2).clone();
                     transportadoras.put(temp.getNome(), temp);
                 }
                 else if (parse_command[0].equalsIgnoreCase("addEncomenda")) {

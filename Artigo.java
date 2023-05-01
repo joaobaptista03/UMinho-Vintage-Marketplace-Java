@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Artigo {
+public abstract class Artigo {
     public enum Condicao {novo, usado}
 
     private int codUtilizador;
@@ -12,7 +12,7 @@ public class Artigo {
     private String cod;
     private float precoBase;
     private float correcaoPreco;
-    private Transportadora transportadora;
+    private String transportadora;
 
     public Artigo() {
         this.codUtilizador = 0;
@@ -24,10 +24,10 @@ public class Artigo {
         this.cod = "";
         this.precoBase = 0;
         this.correcaoPreco = 0;
-        this.transportadora = new Transportadora();
+        this.transportadora = "";
     }
 
-    public Artigo(Integer codUtilizador, Condicao condicao, float estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, Transportadora transportadora) {
+    public Artigo(Integer codUtilizador, Condicao condicao, float estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, String transportadora) {
         this.codUtilizador = codUtilizador;
         this.condicao = condicao;
         this.estado = estado;
@@ -57,7 +57,7 @@ public class Artigo {
         return codUtilizador;
     }
 
-    public void setFiscalUtilizador(int codUtilizador) {
+    public void setCodUtilizador(int codUtilizador) {
         this.codUtilizador = codUtilizador;
     }
 
@@ -125,18 +125,20 @@ public class Artigo {
         this.correcaoPreco = correcaoPreco;
     }
 
-    public Transportadora getTransportadora() {
+    public String getTransportadora() {
         return transportadora;
     }
 
-    public void setTransportadora(Transportadora transportadora) {
+    public void setTransportadora(String transportadora) {
         this.transportadora = transportadora;
     }
 
-    public Artigo clone() { return new Artigo(this); }
+    public abstract float getPrecoTotal();
+
+    public abstract Artigo clone();
 
     public String toString() {
-        return codUtilizador + ";" + condicao + ";" + estado + ";" + donos + ";" + descricao + ";" + marca + ";" + cod + ";" + precoBase + ";" + correcaoPreco + ";" + transportadora + "\n";
+        return codUtilizador + ";" + condicao + ";" + estado + ";" + donos + ";" + descricao + ";" + marca + ";" + cod + ";" + precoBase + ";" + correcaoPreco + ";" + transportadora;
     }
 
     public boolean equals(Object o) {

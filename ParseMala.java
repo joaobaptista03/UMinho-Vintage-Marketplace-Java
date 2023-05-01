@@ -14,7 +14,7 @@ public class ParseMala {
                 parse[7],
                 Float.parseFloat(parse[8]),
                 Float.parseFloat(parse[9]),
-                new Transportadora(parse[10]),
+                parse[10],
                 Float.parseFloat(parse[11]),
                 Float.parseFloat(parse[12]),
                 Float.parseFloat(parse[13]),

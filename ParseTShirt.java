@@ -25,7 +25,7 @@ public class ParseTShirt {
                 parse[7],
                 Float.parseFloat(parse[8]),
                 Float.parseFloat(parse[9]),
-                new Transportadora(parse[10]),
+                parse[10],
                 tamanho,
                 padrao
         );

@@ -124,7 +124,7 @@ public class Utilizador {
     }
 
     public String toString() {
-        return "Utilizador;" + codigo + ";" + email + ";" + nome + ";" + morada + ";" + nrFiscal + ";" + "Vender: " + vender + ";" + comprado + ";" + totVendas + "\n";
+        return codigo + ";" + email + ";" + nome + ";" + morada + ";" + nrFiscal + ";" + "Vender: " + vender + ";" + comprado + ";" + totVendas;
     }
 
     public boolean equals(Object o) {

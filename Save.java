@@ -23,16 +23,16 @@ public class Save {
             File data_output = new File("output/data.txt");
             FileWriter data_write = new FileWriter(data_output);
 
-            for (Utilizador u : utilizadores.values()) utilizadores_write.write(u.toString());
+            for (Utilizador u : utilizadores.values()) utilizadores_write.write(u.toString() + "\n");
             utilizadores_write.close();
 
-            for (Artigo a : marketplace.values()) artigos_write.write(a.toString());
+            for (Artigo a : marketplace.values()) artigos_write.write(a.toString() + "\n");
             artigos_write.close();
 
-            for (Encomenda e : encomendas) encomendas_write.write(e.toString());
+            for (Encomenda e : encomendas) encomendas_write.write(e.toString() + "\n");
             encomendas_write.close();
 
-            for(Transportadora t : transportadoras.values()) transportadoras_write.write(t.toString());
+            for(Transportadora t : transportadoras.values()) transportadoras_write.write(t.toString() + "\n");
             transportadoras_write.close();
 
             data_write.write(data.toString());

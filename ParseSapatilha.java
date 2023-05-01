@@ -14,7 +14,7 @@ public class ParseSapatilha {
                 parse[7],
                 Float.parseFloat(parse[8]),
                 Float.parseFloat(parse[9]),
-                new Transportadora(parse[10]),
+                parse[10],
                 Integer.parseInt(parse[11]),
                 parse[12].equalsIgnoreCase("true"),
                 parse[13],
