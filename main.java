@@ -20,6 +20,7 @@ public class main {
         for (Transportadora t : transportadoras.values()) System.out.println(t.toString());
         System.out.println(data);
         System.out.println("");
+        // TESTES (REMOVER)
 
         Interactive.start(marketplace, utilizadores, encomendas, data, transportadoras);
     }
