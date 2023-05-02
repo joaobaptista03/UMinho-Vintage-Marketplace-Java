@@ -5,14 +5,14 @@ public class ParseTShirt {
             else condicao = Artigo.Condicao.usado;
 
         TShirt.Tamanho tamanho;
-            if (parse[10].equalsIgnoreCase("S")) tamanho = TShirt.Tamanho.S;
-            else if (parse[10].equalsIgnoreCase("M")) tamanho = TShirt.Tamanho.M;
-            else if (parse[10].equalsIgnoreCase("L")) tamanho = TShirt.Tamanho.L;
+            if (parse[11].equalsIgnoreCase("S")) tamanho = TShirt.Tamanho.S;
+            else if (parse[11].equalsIgnoreCase("M")) tamanho = TShirt.Tamanho.M;
+            else if (parse[11].equalsIgnoreCase("L")) tamanho = TShirt.Tamanho.L;
             else tamanho = TShirt.Tamanho.XL;
 
         TShirt.Padrao padrao;
-            if (parse[11].equalsIgnoreCase("liso")) padrao = TShirt.Padrao.liso;
-            else if (parse[11].equalsIgnoreCase("riscas")) padrao = TShirt.Padrao.riscas;
+            if (parse[12].equalsIgnoreCase("liso")) padrao = TShirt.Padrao.liso;
+            else if (parse[12].equalsIgnoreCase("riscas")) padrao = TShirt.Padrao.riscas;
             else padrao = TShirt.Padrao.palmeiras;
 
         TShirt ts1 = new TShirt(
@@ -25,9 +25,9 @@ public class ParseTShirt {
                 parse[7],
                 Float.parseFloat(parse[8]),
                 Float.parseFloat(parse[9]),
+                parse[10],
                 tamanho,
-                padrao,
-                new Transportadora(parse[12])
+                padrao
         );
 
         return ts1;

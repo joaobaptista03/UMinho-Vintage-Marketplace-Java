@@ -1,11 +1,13 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ParseArtigosUtilizador {
-    public static Map<String, Artigo> venda(Map<String, Artigo> marketplace, int codUtilizador){
-        Map<String, Artigo> artigos = new HashMap<>();
+    public static List<String> venda(Map<String, Artigo> marketplace, int codUtilizador){
+        List<String> artigos = new ArrayList<>();
         for(Artigo a : marketplace.values()) {
-            if (a.getCodUtilizador() == codUtilizador) artigos.put(a.getCod(), a.clone());
+            if (a.getCodUtilizador() == codUtilizador) artigos.add(a.getCod());
         }
 
         return artigos;

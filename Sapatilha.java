@@ -16,8 +16,8 @@ public class Sapatilha extends Artigo {
         this.premium = false;
     }
 
-    public Sapatilha(int fiscalUtilizador, Condicao condicao, float estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, int tamanho, boolean atacadores, String cor, int anoColecao, boolean premium, Transportadora transportadora) {
-        super(fiscalUtilizador, condicao, estado, donos, descricao, marca, cod, precoBase, correcaoPreco, transportadora);
+    public Sapatilha(int codUtilizador, Condicao condicao, float estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, String transportadora, int tamanho, boolean atacadores, String cor, int anoColecao, boolean premium) {
+        super(codUtilizador, condicao, estado, donos, descricao, marca, cod, precoBase, correcaoPreco, transportadora);
         this.tamanho = tamanho;
         this.atacadores = atacadores;
         this.cor = cor;
@@ -82,14 +82,7 @@ public class Sapatilha extends Artigo {
     }
 
     public String toString() {
-        return "Sapatilha{" +
-                super.toString() +
-                ", tamanho=" + tamanho +
-                ", atacadores=" + atacadores +
-                ", cor='" + cor + '\'' +
-                ", anoColecao=" + anoColecao +
-                ", premium=" + premium +
-                '}';
+        return "Sapatilha;" + super.toString() + ";" + tamanho + ";" + atacadores + ";" + cor + ";" + anoColecao + ";" + premium;
     }
 
     public boolean equals(Object o) {

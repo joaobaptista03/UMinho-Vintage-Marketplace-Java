@@ -14,13 +14,13 @@ public class ParseMala {
                 parse[7],
                 Float.parseFloat(parse[8]),
                 Float.parseFloat(parse[9]),
-                Float.parseFloat(parse[10]),
+                parse[10],
                 Float.parseFloat(parse[11]),
                 Float.parseFloat(parse[12]),
-                parse[13],
-                Integer.parseInt(parse[14]),
-                parse[15].equalsIgnoreCase("true"),
-                new Transportadora(parse[16])
+                Float.parseFloat(parse[13]),
+                parse[14],
+                Integer.parseInt(parse[15]),
+                parse[16].equalsIgnoreCase("true")
         );
 
         return m1;

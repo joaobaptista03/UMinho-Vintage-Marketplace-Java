@@ -14,12 +14,12 @@ public class ParseSapatilha {
                 parse[7],
                 Float.parseFloat(parse[8]),
                 Float.parseFloat(parse[9]),
-                Integer.parseInt(parse[10]),
-                parse[11].equalsIgnoreCase("true"),
-                parse[12],
-                Integer.parseInt(parse[13]),
-                parse[14].equalsIgnoreCase("true"),
-                new Transportadora(parse[15])
+                parse[10],
+                Integer.parseInt(parse[11]),
+                parse[12].equalsIgnoreCase("true"),
+                parse[13],
+                Integer.parseInt(parse[14]),
+                parse[15].equalsIgnoreCase("true")
         );
 
         return s1;

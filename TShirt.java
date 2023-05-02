@@ -11,7 +11,7 @@ public class TShirt extends Artigo {
         this.padrao = Padrao.liso;
     }
 
-    public TShirt(int fiscalUtilizador, Condicao condicao, float estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, Tamanho tamanho, Padrao padrao, Transportadora transportadora) {
+    public TShirt(int fiscalUtilizador, Condicao condicao, float estado, int donos, String descricao, String marca, String cod, float precoBase, float correcaoPreco, String transportadora, Tamanho tamanho, Padrao padrao) {
         super(fiscalUtilizador, condicao, estado, donos, descricao, marca, cod, precoBase, correcaoPreco, transportadora);
         this.tamanho = tamanho;
         this.padrao = padrao;
@@ -46,11 +46,7 @@ public class TShirt extends Artigo {
     }
 
     public String toString() {
-        return "TShirt{" +
-                super.toString() +
-                ", tamanho=" + tamanho +
-                ", padrao=" + padrao +
-                '}';
+        return "TShirt;" + super.toString() + ";" + tamanho + ";" + padrao;
     }
 
     public boolean equals(Object o) {

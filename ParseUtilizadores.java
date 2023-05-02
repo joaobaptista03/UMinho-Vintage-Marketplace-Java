@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -19,8 +20,8 @@ public class ParseUtilizadores {
                         parsing[2],
                         parsing[3],
                         Integer.parseInt(parsing[4]),
-                        ParseArtigosUtilizador.venda(marketplace, Integer.parseInt(parsing[4])),
-                        new HashMap<>(),
+                        ParseArtigosUtilizador.venda(marketplace, Integer.parseInt(parsing[0])),
+                        new ArrayList<>(),
                         Float.parseFloat(parsing[5])
                 );
 
