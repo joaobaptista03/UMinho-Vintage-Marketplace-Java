@@ -4,7 +4,7 @@ public class ParseSapatilha {
         if (parse[2].equalsIgnoreCase("novo")) condicao = Artigo.Condicao.novo;
         else condicao = Artigo.Condicao.usado;
 
-        Sapatilha s1 = new Sapatilha(
+        return new Sapatilha(
                 Integer.parseInt(parse[1]),
                 condicao,
                 Float.parseFloat(parse[3]),
@@ -21,7 +21,5 @@ public class ParseSapatilha {
                 Integer.parseInt(parse[14]),
                 parse[15].equalsIgnoreCase("true")
         );
-
-        return s1;
     }
 }

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ParseNewUtilizador {
     public static Utilizador parse(String[] parse) {
@@ -9,6 +8,7 @@ public class ParseNewUtilizador {
                 parse[2],
                 parse[3],
                 Integer.parseInt(parse[4]),
+                new ArrayList<>(),
                 new ArrayList<>(),
                 new ArrayList<>(),
                 Float.parseFloat(parse[5])

@@ -39,7 +39,7 @@ public class TShirt extends Artigo {
         this.padrao = padrao;
     }
 
-    public float getPrecoTotal() { return this.getPrecoBase() - this.getCorrecaoPreco(); };
+    public float getPrecoTotal() { return this.getPrecoBase() - this.getCorrecaoPreco(); }
 
     public TShirt clone() {
         return new TShirt(this);

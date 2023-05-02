@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Encomenda {
     public enum Dimensao {grande, medio, pequeno}
@@ -16,7 +15,7 @@ public class Encomenda {
     private LocalDate dataCriada;
 
     public Encomenda() {
-        this.artigos = new ArrayList<String>();
+        this.artigos = new ArrayList<>();
         this.dimensao = Dimensao.pequeno;
         this.estado = Estado.pendente;
         this.dataCriada = LocalDate.now();

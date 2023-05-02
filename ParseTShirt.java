@@ -15,7 +15,7 @@ public class ParseTShirt {
             else if (parse[12].equalsIgnoreCase("riscas")) padrao = TShirt.Padrao.riscas;
             else padrao = TShirt.Padrao.palmeiras;
 
-        TShirt ts1 = new TShirt(
+        return new TShirt(
                 Integer.parseInt(parse[1]),
                 condicao,
                 Float.parseFloat(parse[3]),
@@ -29,7 +29,5 @@ public class ParseTShirt {
                 tamanho,
                 padrao
         );
-
-        return ts1;
     }
 }

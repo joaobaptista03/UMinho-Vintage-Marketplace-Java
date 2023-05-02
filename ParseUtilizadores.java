@@ -22,6 +22,7 @@ public class ParseUtilizadores {
                         Integer.parseInt(parsing[4]),
                         ParseArtigosUtilizador.venda(marketplace, Integer.parseInt(parsing[0])),
                         new ArrayList<>(),
+                        new ArrayList<>(),
                         Float.parseFloat(parsing[5])
                 );
 

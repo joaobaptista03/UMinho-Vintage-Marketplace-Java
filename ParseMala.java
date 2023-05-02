@@ -4,7 +4,7 @@ public class ParseMala {
             if (parse[2].equalsIgnoreCase("novo")) condicao = Artigo.Condicao.novo;
             else condicao = Artigo.Condicao.usado;
 
-        Mala m1 = new Mala(
+        return new Mala(
                 Integer.parseInt(parse[1]),
                 condicao,
                 Float.parseFloat(parse[3]),
@@ -22,7 +22,5 @@ public class ParseMala {
                 Integer.parseInt(parse[15]),
                 parse[16].equalsIgnoreCase("true")
         );
-
-        return m1;
     }
 }

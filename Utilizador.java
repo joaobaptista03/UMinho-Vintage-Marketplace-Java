@@ -9,6 +9,7 @@ public class Utilizador {
     private String morada;
     private int nrFiscal;
     private List<String> vender;
+    private List<String> vendido;
     private List<String> comprado;
     private float totVendas;
 
@@ -19,20 +20,23 @@ public class Utilizador {
         this.morada = "";
         this.nrFiscal = 0;
         this.vender = new ArrayList<>();
+        this.vendido = new ArrayList<>();
         this.comprado = new ArrayList<>();
         this.totVendas = 0;
     }
 
-    public Utilizador(int codigo, String email, String nome, String morada, int nrFiscal, List<String> vender, List<String>  comprado, float totVendas) {
+    public Utilizador(int codigo, String email, String nome, String morada, int nrFiscal, List<String> vender, List<String> vendido, List<String> comprado, float totVendas) {
         this.codigo = codigo;
         this.email = email;
         this.nome = nome;
         this.morada = morada;
         this.nrFiscal = nrFiscal;
         this.vender = new ArrayList<>();
-            for (String a : vender) this.vender.add(a);
+            this.vender.addAll(vender);
+        this.vendido = new ArrayList<>();
+            this.vendido.addAll(vendido);
         this.comprado = new ArrayList<>();
-        for (String a : comprado) this.comprado.add(a);
+            this.comprado.addAll(comprado);
         this.totVendas = totVendas;
     }
 
@@ -43,6 +47,7 @@ public class Utilizador {
         this.morada = u.getMorada();
         this.nrFiscal = u.getNrFiscal();
         this.vender = u.getVender();
+        this.vendido = u.getVendido();
         this.comprado = u.getComprado();
         this.totVendas = u.getTotVendas();
     }
@@ -89,26 +94,38 @@ public class Utilizador {
 
     public List<String> getVender() {
         List<String> newVender = new ArrayList<>();
-        for (String a : this.vender) newVender.add(a);
+            newVender.addAll(this.vender);
 
         return newVender;
     }
 
     public void setVender(List<String> vender) {
         this.vender = new ArrayList<>();
-        for (String a : vender) this.vender.add(a);
+            this.vender.addAll(vender);
+    }
+
+    public List<String> getVendido() {
+        List<String> newVendido = new ArrayList<>();
+        newVendido.addAll(this.vendido);
+
+        return newVendido;
+    }
+
+    public void setVendido(List<String> vendido) {
+        this.vendido = new ArrayList<>();
+        this.vendido.addAll(vendido);
     }
 
     public List<String> getComprado() {
         List<String> newComprado = new ArrayList<>();
-        for (String a : this.comprado) newComprado.add(a);
+         newComprado.addAll(this.comprado);
 
         return newComprado;
     }
 
     public void setComprado(List<String> comprado) {
         this.comprado = new ArrayList<>();
-        for (String a : comprado) this.comprado.add(a);
+            this.comprado.addAll(comprado);
     }
 
     public float getTotVendas() {
@@ -124,14 +141,14 @@ public class Utilizador {
     }
 
     public String toString() {
-        return codigo + ";" + email + ";" + nome + ";" + morada + ";" + nrFiscal + ";" + "Vender: " + vender + ";" + comprado + ";" + totVendas;
+        return codigo + ";" + email + ";" + nome + ";" + morada + ";" + nrFiscal + ";" + vender + ";" + vendido + ";" + comprado + ";" + totVendas;
     }
 
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Utilizador that = (Utilizador) o;
-        return nrFiscal == that.nrFiscal && Float.compare(that.totVendas, totVendas) == 0 && Objects.equals(email, that.email) && Objects.equals(nome, that.nome) && Objects.equals(morada, that.morada) && Objects.equals(vender, that.vender) && Objects.equals(comprado, that.comprado);
+        return codigo == that.codigo && nrFiscal == that.nrFiscal && Float.compare(that.totVendas, totVendas) == 0 && Objects.equals(email, that.email) && Objects.equals(nome, that.nome) && Objects.equals(morada, that.morada) && Objects.equals(vender, that.vender) && Objects.equals(vendido, that.vendido) && Objects.equals(comprado, that.comprado);
     }
-
 }
