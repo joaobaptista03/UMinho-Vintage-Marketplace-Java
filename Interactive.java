@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Interactive {
-    public static void start(Map<String, Artigo> marketplace, Map<Integer, Utilizador> utilizadores, List<Encomenda> encomendas, LocalDate data, Map<String, Transportadora> transportadoras) {
+    public static void start(Map<String, Artigo> marketplace, Map<Integer, Utilizador> utilizadores, Map<String, List<Encomenda>> encomendas, LocalDate data, Map<String, Transportadora> transportadoras) {
         System.out.println("Digite \"--help\" para listar os comandos disponíveis, ou \"exit\" para terminar.");
 
         Scanner stdIN = new Scanner(System.in);
@@ -62,7 +62,7 @@ public class Interactive {
                     transportadoras.put(temp.getNome(), temp);
                 }
                 else if (parse_command[0].equalsIgnoreCase("addEncomenda")) {
-                    encomendas.add(ParseNewEncomenda.parse(parse2, marketplace).clone());
+                    ParseNewEncomenda.parse(parse2, marketplace).forEach((key, value) -> encomendas.get(key).add(value));
                 }
                 else if (parse_command[0].equalsIgnoreCase("mudarData")) {
                     data = data.plusDays(Integer.parseInt(parse_command[1]));
@@ -71,7 +71,9 @@ public class Interactive {
                 // TESTES (REMOVER)
                 for (Artigo a : marketplace.values()) System.out.println(a.toString());
                 for (Utilizador u : utilizadores.values()) System.out.println(u.toString());
-                for (Encomenda e : encomendas) System.out.println(e.toString());
+                for (List<Encomenda> l : encomendas.values()) {
+                    for(Encomenda e : l) System.out.println(e.toString());
+                }
                 for (Transportadora t : transportadoras.values()) System.out.println(t.toString());
                 System.out.println(data);
             }

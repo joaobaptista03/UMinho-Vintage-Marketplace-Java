@@ -22,10 +22,12 @@ public class Encomenda {
         this.dataCriada = LocalDate.now();
     }
 
-    public Encomenda(List<String> artigos, Dimensao dimensao, Estado estado, LocalDate dataCriada) {
+    public Encomenda(List<String> artigos, Estado estado, LocalDate dataCriada) {
         this.artigos = new ArrayList<>();
             this.artigos.addAll(artigos);
-        this.dimensao = dimensao;
+        if (artigos.size() == 1) this.dimensao = Dimensao.pequeno;
+            else if (artigos.size() <= 5) this.dimensao = Dimensao.medio;
+            else this.dimensao = Dimensao.grande;
         this.estado = estado;
         this.dataCriada = dataCriada;
     }
@@ -72,8 +74,8 @@ public class Encomenda {
         this.dataCriada = dataCriada;
     }
 
-    public void addArtigo(Artigo a) {
-        this.artigos.add(a.getCod());
+    public void addArtigo(String a) {
+        this.artigos.add(a);
     }
 
     public void remArtigo(String cod) {

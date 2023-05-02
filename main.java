@@ -8,7 +8,7 @@ public class main {
     public static void main(String[] args) {
         Map<String, Artigo> marketplace = ParseArtigos.get();
         Map<Integer, Utilizador> utilizadores = ParseUtilizadores.get(marketplace);
-        List<Encomenda> encomendas = ParseEncomendas.get(marketplace);
+        Map<String, List<Encomenda>> encomendas = ParseEncomendas.get(marketplace);
         Map<String, Transportadora> transportadoras = ParseTransportadoras.get();
         LocalDate data = LocalDate.now();
 
@@ -16,7 +16,9 @@ public class main {
         System.out.println("");
         for(Artigo a : marketplace.values()) System.out.println(a.toString());
         for(Utilizador u : utilizadores.values()) System.out.println(u.toString());
-        for (Encomenda e : encomendas) System.out.println(e.toString());
+        for (List<Encomenda> l : encomendas.values()) {
+            for(Encomenda e : l) System.out.println(e.toString());
+        }
         for (Transportadora t : transportadoras.values()) System.out.println(t.toString());
         System.out.println(data);
         System.out.println("");

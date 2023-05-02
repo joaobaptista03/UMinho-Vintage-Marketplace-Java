@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Save {
-    public static void now(Map<String, Artigo> marketplace, Map<Integer, Utilizador> utilizadores, List<Encomenda> encomendas, LocalDate data, Map<String, Transportadora> transportadoras) {
+    public static void now(Map<String, Artigo> marketplace, Map<Integer, Utilizador> utilizadores, Map<String,List<Encomenda>> encomendas, LocalDate data, Map<String, Transportadora> transportadoras) {
         try {
             File utilizadores_output = new File("output/utilizadores.txt");
             FileWriter utilizadores_write = new FileWriter(utilizadores_output);
@@ -29,7 +29,8 @@ public class Save {
             for (Artigo a : marketplace.values()) artigos_write.write(a.toString() + "\n");
             artigos_write.close();
 
-            for (Encomenda e : encomendas) encomendas_write.write(e.toString() + "\n");
+            for (List<Encomenda> l : encomendas.values())
+                for(Encomenda e : l) encomendas_write.write(e.toString() + "\n");
             encomendas_write.close();
 
             for(Transportadora t : transportadoras.values()) transportadoras_write.write(t.toString() + "\n");
