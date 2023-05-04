@@ -1,10 +1,7 @@
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Interactive {
-    public static void start(Map<String, Artigo> marketplace, Map<String, Artigo> vendidos, Map<Integer, Utilizador> utilizadores, Map<String, List<Encomenda>> encomendas, LocalDate data, Map<String, Transportadora> transportadoras) {
+    public static void start() {
         System.out.println("Digite \"--help\" para listar os comandos disponíveis, ou \"exit\" para terminar.");
 
         Scanner stdIN = new Scanner(System.in);
@@ -16,7 +13,7 @@ public class Interactive {
             if (parse_command.length == 1) {
                 if (line.equalsIgnoreCase("exit")) return;
 
-                if (line.equalsIgnoreCase("save")) Save.now(marketplace, vendidos, utilizadores, encomendas, data, transportadoras);
+                if (line.equalsIgnoreCase("save")) GestãoVinted.save();
 
                 else if (line.equalsIgnoreCase("--help")) {
                     System.out.println("Criar um novo utilizador -> addUtilizador <codigo>;<email>;<nome>;<morada>;<nrFiscal>;<totVendas>");
@@ -40,57 +37,37 @@ public class Interactive {
                 String[] parse2 = (parse_command[1]).split(";");
 
                 if (parse_command[0].equalsIgnoreCase("addUtilizador")) {
-                    Utilizador temp = ParseNewUtilizador.parse(parse2).clone();
-                    utilizadores.put(temp.getCodigo(), temp);
+                    Utilizador temp = ParseNewUtilizador.parse(parse2);
+                    GestãoVinted.addUtilizador(temp);
                 }
                 else if (parse_command[0].equalsIgnoreCase("addMala")) {
-                    Mala temp = ParseMala.parse(parse).clone();
-                    marketplace.put(temp.getCod(), temp);
-                    utilizadores.get(temp.getCodUtilizador()).getVender().add(temp.getCod());
+                    Mala temp = ParseMala.parse(parse);
+                    GestãoVinted.addArtigoMarketplace(temp);
+                    GestãoVinted.removeUtilizadorVender(temp.getCodUtilizador(), temp.getCod());
                 }
                 else if (parse_command[0].equalsIgnoreCase("addTShirt")) {
-                    TShirt temp = ParseTShirt.parse(parse).clone();
-                    marketplace.put(temp.getCod(), temp);
-                    utilizadores.get(temp.getCodUtilizador()).getVender().add(temp.getCod());
+                    TShirt temp = ParseTShirt.parse(parse);
+                    GestãoVinted.addArtigoMarketplace(temp);
+                    GestãoVinted.removeUtilizadorVender(temp.getCodUtilizador(), temp.getCod());
                 }
                 else if (parse_command[0].equalsIgnoreCase("addSapatilha")) {
-                    Sapatilha temp = ParseSapatilha.parse(parse).clone();
-                    marketplace.put(temp.getCod(), temp);
-                    utilizadores.get(temp.getCodUtilizador()).getVender().add(temp.getCod());
+                    Sapatilha temp = ParseSapatilha.parse(parse);
+                    GestãoVinted.addArtigoMarketplace(temp);
+                    GestãoVinted.removeUtilizadorVender(temp.getCodUtilizador(), temp.getCod());
                 }
                 else if (parse_command[0].equalsIgnoreCase("addTransportadora")) {
-                    Transportadora temp = ParseNewTransportadora.parse(parse2).clone();
-                    transportadoras.put(temp.getNome(), temp);
+                    Transportadora temp = ParseNewTransportadora.parse(parse2);
+                    GestãoVinted.addTransportadora(temp);
                 }
                 else if (parse_command[0].equalsIgnoreCase("addEncomenda")) {
-                    ParseNewEncomenda.parse(parse2, marketplace).forEach((key, value) -> encomendas.get(key).add(value));
+                    ParseNewEncomenda.parse(parse2).forEach((key, value) -> GestãoVinted.addEncomenda(key, value));
                 }
                 else if (parse_command[0].equalsIgnoreCase("mudarData")) {
-                    data = data.plusDays(Integer.parseInt(parse_command[1]));
-                    UpdateCatalogs.now(marketplace, vendidos, utilizadores, encomendas, data, transportadoras);
+                    GestãoVinted.mudarData(Integer.parseInt(parse_command[1]));
+                    GestãoVinted.update();
                 }
 
-                // TESTES (REMOVER)
-                System.out.println("\nMarketplace:");
-                for (Artigo a : marketplace.values()) System.out.println(a.toString());
-
-                System.out.println("\nVendidos:");
-                for (Artigo a : vendidos.values()) System.out.println(a.toString());
-                
-                System.out.println("\nUtilizadores:");
-                for (Utilizador u : utilizadores.values()) System.out.println(u.toString());
-                
-                System.out.println("\nEncomendas:");
-                for (List<Encomenda> l : encomendas.values()) {
-                    for(Encomenda e : l) System.out.println(e.toString());
-                }
-                
-                System.out.println("\nTransportadoras:");
-                for (Transportadora t : transportadoras.values()) System.out.println(t.toString());
-                
-                System.out.println("\nData:");
-                System.out.println(data);
-                // TESTES (REMOVER)
+                GestãoVinted.testar();
             }
         }
 

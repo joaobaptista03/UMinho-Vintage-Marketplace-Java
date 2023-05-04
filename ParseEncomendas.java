@@ -12,7 +12,7 @@ public class ParseEncomendas {
                 String line = reader.nextLine();
                 String[] parse = line.split(";");
 
-                Map<String, Encomenda> temp = ParseNewEncomenda.parse(parse, marketplace);
+                Map<String, Encomenda> temp = ParseNewEncomenda.parse(parse);
 
                 temp.forEach((key, value) -> {
                     if (!encomendasMap.containsKey(key)) {

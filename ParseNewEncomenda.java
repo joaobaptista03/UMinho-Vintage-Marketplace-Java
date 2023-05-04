@@ -5,18 +5,19 @@ import java.util.List;
 import java.util.Map;
 
 public class ParseNewEncomenda {
-    public static Map<String,Encomenda> parse(String[] parse, Map<String, Artigo> marketplace) {
+    public static Map<String,Encomenda> parse(String[] parse) {
         int nrArtigos = Integer.parseInt(parse[0]);
 
         Map<String,Encomenda> encomendasMap = new HashMap<>();
 
         for(int i = 0; i < nrArtigos; i++) {
-            String transportadoraTemp = marketplace.get(parse[i+1]).getTransportadora();
+            Artigo tempA = GestãoVinted.getArtigoMarketplace(parse[i+1]);
+            String transportadoraTemp = tempA.getTransportadora();
             if (!encomendasMap.containsKey(transportadoraTemp)) {
-                List<String> newEncArt = new ArrayList<>(); newEncArt.add(marketplace.get(parse[i+1]).getCod());
+                List<String> newEncArt = new ArrayList<>(); newEncArt.add(tempA.getCod());
                 encomendasMap.put(transportadoraTemp, new Encomenda(newEncArt, Encomenda.Estado.pendente, LocalDate.parse(parse[nrArtigos + 2])));
             }
-            else encomendasMap.get(transportadoraTemp).addArtigo(marketplace.get(parse[i+1]).getCod());
+            else encomendasMap.get(transportadoraTemp).addArtigo(tempA.getCod());
         }
 
         return encomendasMap;
