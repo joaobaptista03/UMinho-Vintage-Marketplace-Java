@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Interactive {
-    public static void start(Map<String, Artigo> marketplace, Map<Integer, Utilizador> utilizadores, Map<String, List<Encomenda>> encomendas, LocalDate data, Map<String, Transportadora> transportadoras) {
+    public static void start(Map<String, Artigo> marketplace, Map<String, Artigo> vendidos, Map<Integer, Utilizador> utilizadores, Map<String, List<Encomenda>> encomendas, LocalDate data, Map<String, Transportadora> transportadoras) {
         System.out.println("Digite \"--help\" para listar os comandos disponíveis, ou \"exit\" para terminar.");
 
         Scanner stdIN = new Scanner(System.in);
@@ -16,7 +16,7 @@ public class Interactive {
             if (parse_command.length == 1) {
                 if (line.equalsIgnoreCase("exit")) return;
 
-                if (line.equalsIgnoreCase("save")) Save.now(marketplace, utilizadores, encomendas, data, transportadoras);
+                if (line.equalsIgnoreCase("save")) Save.now(marketplace, vendidos, utilizadores, encomendas, data, transportadoras);
 
                 else if (line.equalsIgnoreCase("--help")) {
                     System.out.println("Criar um novo utilizador -> addUtilizador <codigo>;<email>;<nome>;<morada>;<nrFiscal>;<totVendas>");
@@ -67,16 +67,28 @@ public class Interactive {
                 }
                 else if (parse_command[0].equalsIgnoreCase("mudarData")) {
                     data = data.plusDays(Integer.parseInt(parse_command[1]));
-                    UpdateCatalogs.now(marketplace, utilizadores, encomendas, data, transportadoras);
+                    UpdateCatalogs.now(marketplace, vendidos, utilizadores, encomendas, data, transportadoras);
                 }
 
                 // TESTES (REMOVER)
+                System.out.println("\nMarketplace:");
                 for (Artigo a : marketplace.values()) System.out.println(a.toString());
+
+                System.out.println("\nVendidos:");
+                for (Artigo a : vendidos.values()) System.out.println(a.toString());
+                
+                System.out.println("\nUtilizadores:");
                 for (Utilizador u : utilizadores.values()) System.out.println(u.toString());
+                
+                System.out.println("\nEncomendas:");
                 for (List<Encomenda> l : encomendas.values()) {
                     for(Encomenda e : l) System.out.println(e.toString());
                 }
+                
+                System.out.println("\nTransportadoras:");
                 for (Transportadora t : transportadoras.values()) System.out.println(t.toString());
+                
+                System.out.println("\nData:");
                 System.out.println(data);
                 // TESTES (REMOVER)
             }

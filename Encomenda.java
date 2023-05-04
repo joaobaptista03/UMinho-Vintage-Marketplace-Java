@@ -99,7 +99,7 @@ public class Encomenda {
 
     @Override
     public String toString() {
-        return "Encomenda;" + artigos + ";" + dimensao + ";" + estado + ";" + dataCriada;
+        return artigos + ";" + dimensao + ";" + estado + ";" + dataCriada;
     }
 
     @Override

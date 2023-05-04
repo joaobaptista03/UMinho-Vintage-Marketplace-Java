@@ -6,13 +6,16 @@ import java.util.List;
 import java.util.Map;
 
 public class Save {
-    public static void now(Map<String, Artigo> marketplace, Map<Integer, Utilizador> utilizadores, Map<String,List<Encomenda>> encomendas, LocalDate data, Map<String, Transportadora> transportadoras) {
+    public static void now(Map<String, Artigo> marketplace, Map<String, Artigo> vendidos, Map<Integer, Utilizador> utilizadores, Map<String,List<Encomenda>> encomendas, LocalDate data, Map<String, Transportadora> transportadoras) {
         try {
             File utilizadores_output = new File("output/utilizadores.txt");
             FileWriter utilizadores_write = new FileWriter(utilizadores_output);
 
-            File artigos_output = new File("output/artigos.txt");
-            FileWriter artigos_write = new FileWriter(artigos_output);
+            File marketplace_output = new File("output/marketplace.txt");
+            FileWriter marketplace_writer = new FileWriter(marketplace_output);
+
+            File vendidos_output = new File("output/vendidos.txt");
+            FileWriter vendidos_writer = new FileWriter(vendidos_output);
 
             File encomendas_output = new File("output/encomendas.txt");
             FileWriter encomendas_write = new FileWriter(encomendas_output);
@@ -26,8 +29,11 @@ public class Save {
             for (Utilizador u : utilizadores.values()) utilizadores_write.write(u.toString() + "\n");
             utilizadores_write.close();
 
-            for (Artigo a : marketplace.values()) artigos_write.write(a.toString() + "\n");
-            artigos_write.close();
+            for (Artigo a : marketplace.values()) marketplace_writer.write(a.toString() + "\n");
+            marketplace_writer.close();
+
+            for (Artigo a : vendidos.values()) vendidos_writer.write(a.toString() + "\n");
+            vendidos_writer.close();
 
             for (List<Encomenda> l : encomendas.values())
                 for(Encomenda e : l) encomendas_write.write(e.toString() + "\n");

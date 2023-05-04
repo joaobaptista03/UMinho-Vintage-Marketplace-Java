@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public class UpdateCatalogs {
-    public static void now(Map<String, Artigo> marketplace, Map<Integer, Utilizador> utilizadores, Map<String, List<Encomenda>> encomendas, LocalDate data, Map<String, Transportadora> transportadoras) {
+    public static void now(Map<String, Artigo> marketplace, Map<String, Artigo> vendidos, Map<Integer, Utilizador> utilizadores, Map<String, List<Encomenda>> encomendas, LocalDate data, Map<String, Transportadora> transportadoras) {
 
         encomendas.forEach( (transportadora, encomendasTransportadora) -> {
             int diasParaExpedicao = transportadoras.get(transportadora).getDiasParaExpedicao();
@@ -18,7 +18,9 @@ public class UpdateCatalogs {
                     for (String cod : encomenda.getArtigos()) {
                         utilizadores.get(marketplace.get(cod).getCodUtilizador()).removeVender(cod);
                         utilizadores.get(marketplace.get(cod).getCodUtilizador()).adicionaVendido(cod);
+                        Artigo temp = marketplace.get(cod);
                         marketplace.remove(cod);
+                        vendidos.put(cod, temp);
                     }
                     it.remove();
                 }
