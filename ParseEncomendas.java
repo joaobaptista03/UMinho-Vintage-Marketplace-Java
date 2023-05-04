@@ -13,6 +13,7 @@ public class ParseEncomendas {
                 String[] parse = line.split(";");
 
                 Map<String, Encomenda> temp = ParseNewEncomenda.parse(parse, marketplace);
+
                 temp.forEach((key, value) -> {
                     if (!encomendasMap.containsKey(key)) {
                         List<Encomenda> tempList = new ArrayList<>(); tempList.add(value);

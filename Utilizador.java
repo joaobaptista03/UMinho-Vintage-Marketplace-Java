@@ -136,6 +136,30 @@ public class Utilizador {
         this.totVendas = totVendas;
     }
 
+    public void removeVender(String a) {
+        vender.remove(a);
+    }
+
+    public void adicionaVender(String a) {
+        vender.add(a);
+    }
+    
+    public void removeVendido(String a) {
+        vendido.remove(a);
+    }
+
+    public void adicionaVendido(String a) {
+        vendido.add(a);
+    }
+
+    public void removeComprado(String a) {
+        comprado.remove(a);
+    }
+
+    public void adicionaComprado(String a) {
+        comprado.add(a);
+    }
+
     public Utilizador clone() {
         return new Utilizador(this);
     }

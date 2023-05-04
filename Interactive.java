@@ -8,6 +8,7 @@ public class Interactive {
         System.out.println("Digite \"--help\" para listar os comandos disponíveis, ou \"exit\" para terminar.");
 
         Scanner stdIN = new Scanner(System.in);
+
         while (stdIN.hasNextLine()) {
             String line = stdIN.nextLine();
             String[] parse_command = line.split(" ", 2);
@@ -66,6 +67,7 @@ public class Interactive {
                 }
                 else if (parse_command[0].equalsIgnoreCase("mudarData")) {
                     data = data.plusDays(Integer.parseInt(parse_command[1]));
+                    UpdateCatalogs.now(marketplace, utilizadores, encomendas, data, transportadoras);
                 }
 
                 // TESTES (REMOVER)
@@ -79,6 +81,8 @@ public class Interactive {
                 // TESTES (REMOVER)
             }
         }
+
+        stdIN.close();
     }
 }
 

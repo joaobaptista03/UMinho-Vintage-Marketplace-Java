@@ -5,6 +5,7 @@ public class Transportadora {
     private float expedicaoPequeno, expedicaoMedio, expedicaoGrande;
     private float lucro;
     private float imposto;
+    private int diasParaExpedicao;
 
     public Transportadora() {
         this.nome = "";
@@ -13,15 +14,17 @@ public class Transportadora {
         this.expedicaoGrande = 0;
         this.lucro = 0;
         this.imposto = 0;
+        this.diasParaExpedicao = 0;
     }
 
-    public Transportadora(String nome, float expedicaoPequeno, float expedicaoMedio, float expedicaoGrande, float lucro, float imposto) {
+    public Transportadora(String nome, float expedicaoPequeno, float expedicaoMedio, float expedicaoGrande, float lucro, float imposto, int diasParaExpedicao) {
         this.nome = nome;
         this.expedicaoPequeno = expedicaoPequeno;
         this.expedicaoMedio = expedicaoMedio;
         this.expedicaoGrande = expedicaoGrande;
         this.lucro = lucro;
         this.imposto = imposto;
+        this.diasParaExpedicao = diasParaExpedicao;
     }
 
     public Transportadora(Transportadora t) {
@@ -31,6 +34,7 @@ public class Transportadora {
         this.expedicaoGrande = t.getExpedicaoGrande();
         this.lucro = t.getLucro();
         this.imposto = t.getImposto();
+        this.diasParaExpedicao = t.getDiasParaExpedicao();
     }
 
     public String getNome() {
@@ -81,6 +85,15 @@ public class Transportadora {
         this.imposto = imposto;
     }
 
+
+    public int getDiasParaExpedicao() {
+        return this.diasParaExpedicao;
+    }
+
+    public void setDiasParaExpedicao(int diasParaExpedicao) {
+        this.diasParaExpedicao = diasParaExpedicao;
+    }
+
     public float calcPrecoExpedicao(Encomenda.Dimensao d) {
         float valorBase = 0;
         if (d.equals(Encomenda.Dimensao.pequeno)) valorBase = expedicaoPequeno;
@@ -96,14 +109,17 @@ public class Transportadora {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Transportadora that = (Transportadora) o;
-        return Float.compare(that.expedicaoPequeno, expedicaoPequeno) == 0 && Float.compare(that.expedicaoMedio, expedicaoMedio) == 0 && Float.compare(that.expedicaoGrande, expedicaoGrande) == 0 && Float.compare(that.lucro, lucro) == 0 && Float.compare(that.imposto, imposto) == 0 && Objects.equals(nome, that.nome);
+        if (o == this)
+            return true;
+        if (!(o instanceof Transportadora)) {
+            return false;
+        }
+        Transportadora transportadora = (Transportadora) o;
+        return Objects.equals(nome, transportadora.nome) && expedicaoPequeno == transportadora.expedicaoPequeno && expedicaoMedio == transportadora.expedicaoMedio && expedicaoGrande == transportadora.expedicaoGrande && lucro == transportadora.lucro && imposto == transportadora.imposto && diasParaExpedicao == transportadora.diasParaExpedicao;
     }
 
     @Override
     public String toString() {
-        return nome + ";" + expedicaoPequeno + ";" + expedicaoMedio + ";" + expedicaoGrande + ";" + lucro + ";" + imposto;
+        return nome + ";" + expedicaoPequeno + ";" + expedicaoMedio + ";" + expedicaoGrande + ";" + lucro + ";" + imposto + ";" + diasParaExpedicao;
     }
 }

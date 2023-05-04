@@ -6,7 +6,8 @@ public class ParseNewTransportadora {
                 Float.parseFloat(parse[2]),
                 Float.parseFloat(parse[3]),
                 Float.parseFloat(parse[4]),
-                Float.parseFloat(parse[5])
+                Float.parseFloat(parse[5]),
+                Integer.parseInt(parse[6])
         );
     }
 }
