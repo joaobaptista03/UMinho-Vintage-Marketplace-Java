@@ -75,6 +75,9 @@ public class Encomenda {
 
     public void addArtigo(String a) {
         this.artigos.add(a);
+        if (artigos.size() == 1) this.dimensao = Dimensao.pequeno;
+        else if (artigos.size() <= 5) this.dimensao = Dimensao.medio;
+        else this.dimensao = Dimensao.grande;
     }
 
     public void remArtigo(String cod) {
