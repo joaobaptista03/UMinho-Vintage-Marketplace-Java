@@ -11,8 +11,9 @@ public class ParseNewEncomenda {
         Map<String,Encomenda> encomendasMap = new HashMap<>();
 
         for(int i = 0; i < nrArtigos; i++) {
-            Artigo tempA = GestãoVinted.getArtigoMarketplace(parse[i+1]);
+            Artigo tempA = GestãoVintage.getArtigoMarketplace(parse[i+1]);
             String transportadoraTemp = tempA.getTransportadora();
+
             if (!encomendasMap.containsKey(transportadoraTemp)) {
                 List<String> newEncArt = new ArrayList<>(); newEncArt.add(tempA.getCod());
                 encomendasMap.put(transportadoraTemp, new Encomenda(newEncArt, Encomenda.Estado.pendente, LocalDate.parse(parse[nrArtigos + 2])));

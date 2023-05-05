@@ -1,7 +1,7 @@
 public class main {
     public static void main(String[] args) {
 
-        GestãoVinted.testar();
+        GestãoVintage.testar();
 
         Interactive.start();
     }

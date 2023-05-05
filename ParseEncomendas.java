@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class ParseEncomendas {
-    public static Map<String, List<Encomenda>> get(Map<String, Artigo> marketplace) {
+    public static Map<String, List<Encomenda>> get() {
         Map<String,List<Encomenda>> encomendasMap = new HashMap<>();
         try {
             File input = new File("input/encomendas.txt");

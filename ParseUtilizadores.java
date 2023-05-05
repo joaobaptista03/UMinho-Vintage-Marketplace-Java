@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class ParseUtilizadores {
-    public static Map<Integer, Utilizador> get(Map<String, Artigo> marketplace) {
+    public static Map<Integer, Utilizador> get() {
         Map<Integer, Utilizador> utilizadores = new HashMap<>();
         try {
             File input = new File("input/utilizadores.txt");
@@ -20,7 +20,7 @@ public class ParseUtilizadores {
                         parsing[2],
                         parsing[3],
                         Integer.parseInt(parsing[4]),
-                        ParseArtigosUtilizador.venda(marketplace, Integer.parseInt(parsing[0])),
+                        GestãoVintage.getArtigosUtilizador(Integer.parseInt(parsing[0])),
                         new ArrayList<>(),
                         new ArrayList<>(),
                         Float.parseFloat(parsing[5])

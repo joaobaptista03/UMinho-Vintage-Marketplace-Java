@@ -13,7 +13,9 @@ public class Interactive {
             if (parse_command.length == 1) {
                 if (line.equalsIgnoreCase("exit")) return;
 
-                if (line.equalsIgnoreCase("save")) GestãoVinted.save();
+                if (line.equalsIgnoreCase("save")) GestãoVintage.save();
+                
+                if (line.equalsIgnoreCase("lucrovintage")) System.out.println(GestãoVintage.getLucrovintage());
 
                 else if (line.equalsIgnoreCase("--help")) {
                     System.out.println("Criar um novo utilizador -> addUtilizador <codigo>;<email>;<nome>;<morada>;<nrFiscal>;<totVendas>");
@@ -38,36 +40,36 @@ public class Interactive {
 
                 if (parse_command[0].equalsIgnoreCase("addUtilizador")) {
                     Utilizador temp = ParseNewUtilizador.parse(parse2);
-                    GestãoVinted.addUtilizador(temp);
+                    GestãoVintage.addUtilizador(temp);
                 }
                 else if (parse_command[0].equalsIgnoreCase("addMala")) {
                     Mala temp = ParseMala.parse(parse);
-                    GestãoVinted.addArtigoMarketplace(temp);
-                    GestãoVinted.removeUtilizadorVender(temp.getCodUtilizador(), temp.getCod());
+                    GestãoVintage.addArtigoMarketplace(temp);
+                    GestãoVintage.removeUtilizadorVender(temp.getCodUtilizador(), temp.getCod());
                 }
                 else if (parse_command[0].equalsIgnoreCase("addTShirt")) {
                     TShirt temp = ParseTShirt.parse(parse);
-                    GestãoVinted.addArtigoMarketplace(temp);
-                    GestãoVinted.removeUtilizadorVender(temp.getCodUtilizador(), temp.getCod());
+                    GestãoVintage.addArtigoMarketplace(temp);
+                    GestãoVintage.removeUtilizadorVender(temp.getCodUtilizador(), temp.getCod());
                 }
                 else if (parse_command[0].equalsIgnoreCase("addSapatilha")) {
                     Sapatilha temp = ParseSapatilha.parse(parse);
-                    GestãoVinted.addArtigoMarketplace(temp);
-                    GestãoVinted.removeUtilizadorVender(temp.getCodUtilizador(), temp.getCod());
+                    GestãoVintage.addArtigoMarketplace(temp);
+                    GestãoVintage.removeUtilizadorVender(temp.getCodUtilizador(), temp.getCod());
                 }
                 else if (parse_command[0].equalsIgnoreCase("addTransportadora")) {
                     Transportadora temp = ParseNewTransportadora.parse(parse2);
-                    GestãoVinted.addTransportadora(temp);
+                    GestãoVintage.addTransportadora(temp);
                 }
                 else if (parse_command[0].equalsIgnoreCase("addEncomenda")) {
-                    ParseNewEncomenda.parse(parse2).forEach((key, value) -> GestãoVinted.addEncomenda(key, value));
+                    ParseNewEncomenda.parse(parse2).forEach((key, value) -> GestãoVintage.addEncomenda(key, value));
                 }
                 else if (parse_command[0].equalsIgnoreCase("mudarData")) {
-                    GestãoVinted.mudarData(Integer.parseInt(parse_command[1]));
-                    GestãoVinted.update();
+                    GestãoVintage.mudarData(Integer.parseInt(parse_command[1]));
+                    GestãoVintage.update();
                 }
 
-                GestãoVinted.testar();
+                GestãoVintage.testar();
             }
         }
 

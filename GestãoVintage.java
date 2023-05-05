@@ -2,17 +2,18 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class GestãoVinted {
+public class GestãoVintage {
     private static Map<String, Artigo> marketplace = ParseArtigos.get();
     private static Map<String, Artigo> vendidos = new HashMap<>();
-    private static Map<Integer, Utilizador> utilizadores = ParseUtilizadores.get(marketplace);
-    private static Map<String, List<Encomenda>> encomendas = ParseEncomendas.get(marketplace);
+    private static Map<Integer, Utilizador> utilizadores = ParseUtilizadores.get();
+    private static Map<String, List<Encomenda>> encomendas = ParseEncomendas.get();
     private static Map<String, Transportadora> transportadoras = ParseTransportadoras.get();
     private static LocalDate data = LocalDate.now();
 
@@ -96,6 +97,16 @@ public class GestãoVinted {
 
     public static void mudarData(int dias) {
         data = data.plusDays(dias);
+    }
+
+    public static float getLucrovintage() {
+        float total = 0;
+        for (Artigo a : vendidos.values()) {
+            if (a.getCondicao().equals(Artigo.Condicao.novo)) total += 0.5;
+            else total += 0.25;
+        }
+
+        return total;
     }
 
     public static void testar() {
@@ -187,5 +198,14 @@ public class GestãoVinted {
                 }
             }
         });
+    }
+
+    public static List<String> getArtigosUtilizador(int codUtilizador){
+        List<String> artigos = new ArrayList<>();
+        for(Artigo a : marketplace.values()) {
+            if (a.getCodUtilizador() == codUtilizador) artigos.add(a.getCod());
+        }
+
+        return artigos;
     }
 }
