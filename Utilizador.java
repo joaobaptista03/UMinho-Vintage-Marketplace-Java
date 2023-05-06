@@ -165,7 +165,7 @@ public class Utilizador {
     }
 
     public String toString() {
-        return codigo + ";" + email + ";" + nome + ";" + morada + ";" + nrFiscal + ";" + vender + ";" + vendido + ";" + comprado + ";" + totVendas;
+        return codigo + ";" + email + ";" + nome + ";" + morada + ";" + nrFiscal + ";" + totVendas;
     }
 
     @Override

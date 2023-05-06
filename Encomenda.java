@@ -102,7 +102,13 @@ public class Encomenda {
 
     @Override
     public String toString() {
-        return artigos + ";" + dimensao + ";" + estado + ";" + dataCriada;
+        String returnS = artigos.size() + ";";
+        for (String a : artigos) returnS += a + ";";
+        
+        returnS += estado + ";";
+        returnS += dataCriada;
+
+        return returnS;
     }
 
     @Override

@@ -20,8 +20,8 @@ public class ParseUtilizadores {
                         parsing[2],
                         parsing[3],
                         Integer.parseInt(parsing[4]),
-                        GestãoVintage.getArtigosUtilizador(Integer.parseInt(parsing[0])),
-                        new ArrayList<>(),
+                        GestãoVintage.getMarketplaceUtilizador(Integer.parseInt(parsing[0])),
+                        GestãoVintage.getVendidosUtilizador(Integer.parseInt(parsing[0])),
                         new ArrayList<>(),
                         Float.parseFloat(parsing[5])
                 );

@@ -16,7 +16,7 @@ public class GestãoVintage {
     private static Map<Integer, Utilizador> utilizadores = ParseUtilizadores.get();
     private static Map<String, List<Encomenda>> encomendas = ParseEncomendas.get();
     private static Map<String, Transportadora> transportadoras = ParseTransportadoras.get();
-    private static LocalDate data = LocalDate.now();
+    private static LocalDate data = ParseData.get();
 
     public static Artigo getArtigoMarketplace(String cod) {
         return marketplace.get(cod).clone();
@@ -201,9 +201,18 @@ public class GestãoVintage {
         });
     }
 
-    public static List<String> getArtigosUtilizador(int codUtilizador){
+    public static List<String> getMarketplaceUtilizador(int codUtilizador){
         List<String> artigos = new ArrayList<>();
         for(Artigo a : marketplace.values()) {
+            if (a.getCodUtilizador() == codUtilizador) artigos.add(a.getCod());
+        }
+
+        return artigos;
+    }
+
+    public static List<String> getVendidosUtilizador(int codUtilizador){
+        List<String> artigos = new ArrayList<>();
+        for(Artigo a : vendidos.values()) {
             if (a.getCodUtilizador() == codUtilizador) artigos.add(a.getCod());
         }
 
