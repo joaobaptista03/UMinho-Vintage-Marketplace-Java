@@ -4,11 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+
 public class ParseArtigos {
-    public static Map<String, Artigo> get() {
+    public static Map<String, Artigo> get(GestãoVintage.TipoArtigoColecao tipo) {
         Map<String, Artigo> artigos = new HashMap<>();
         try {
-            File input = new File("input/marketplace.txt");
+            String file_path = "";
+            if (tipo.equals(GestãoVintage.TipoArtigoColecao.marketplace)) file_path = "input/marketplace.txt";
+                else file_path = "input/vendidos.txt";
+                
+            File input = new File(file_path);
             Scanner reader = new Scanner(input);
             while (reader.hasNextLine()) {
                 String line = reader.nextLine();

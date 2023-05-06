@@ -3,15 +3,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class GestãoVintage {
-    private static Map<String, Artigo> marketplace = ParseArtigos.get();
-    private static Map<String, Artigo> vendidos = new HashMap<>();
+    public enum TipoArtigoColecao {marketplace, vendidos};
+
+    private static Map<String, Artigo> marketplace = ParseArtigos.get(TipoArtigoColecao.marketplace);
+    private static Map<String, Artigo> vendidos = ParseArtigos.get(TipoArtigoColecao.vendidos);
     private static Map<Integer, Utilizador> utilizadores = ParseUtilizadores.get();
     private static Map<String, List<Encomenda>> encomendas = ParseEncomendas.get();
     private static Map<String, Transportadora> transportadoras = ParseTransportadoras.get();
