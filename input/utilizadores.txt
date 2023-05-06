@@ -1,2 +1,2 @@
-1234;joao@gmail.com;Joao;Rua;246370998;453
-5678;joana@gmail.com;Joana;Av;543536365;451
+1234;joao@gmail.com;Joao;Rua;246370998;0
+5678;joana@gmail.com;Joana;Av;543536365;0

@@ -16,6 +16,8 @@ public class Interactive {
                     
                     if (line.equalsIgnoreCase("lucrovintage")) System.out.println(GestãoVintage.getLucrovintage());
 
+                    if (line.equalsIgnoreCase("utilizadorMaiorFaturacao")) System.out.println(GestãoVintage.getUtilizador(GestãoVintage.getUtilizadorMaiorFaturacao()));
+
                     else if (line.equalsIgnoreCase("--help")) {
                         System.out.println("Criar um novo utilizador -> addUtilizador <codigo>;<email>;<nome>;<morada>;<nrFiscal>;<totVendas>");
 

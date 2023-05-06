@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class GestãoVintage {
@@ -189,11 +190,11 @@ public class GestãoVintage {
                 LocalDate expedicaoPrevista = encomenda.getDataCriada().plusDays(diasParaExpedicao);
                 if (data.isAfter(expedicaoPrevista) || data.isEqual(expedicaoPrevista)) {
                     for (String cod : encomenda.getArtigos()) {
-                        utilizadores.get(marketplace.get(cod).getCodUtilizador()).removeVender(cod);
-                        utilizadores.get(marketplace.get(cod).getCodUtilizador()).adicionaVendido(cod);
-                        Artigo temp = marketplace.get(cod);
+                        Utilizador tempU = utilizadores.get(marketplace.get(cod).getCodUtilizador());
+                        Artigo tempA = marketplace.get(cod);
+                        tempU.removeVender(cod); tempU.adicionaVendido(cod); tempU.setTotVendas(tempU.getTotVendas() + tempA.getPrecoTotal());
                         marketplace.remove(cod);
-                        vendidos.put(cod, temp);
+                        vendidos.put(cod, tempA);
                     }
                     it.remove();
                 }
@@ -217,5 +218,12 @@ public class GestãoVintage {
         }
 
         return artigos;
+    }
+
+    public static int getUtilizadorMaiorFaturacao() {
+        Optional<Utilizador> temp = utilizadores.values().stream().sorted((u1, u2) -> (int) (u2.getTotVendas() - u1.getTotVendas())).findFirst();
+
+        if (temp.isPresent()) return temp.get().getCodigo();
+        return 0;
     }
 }
