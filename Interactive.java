@@ -33,7 +33,7 @@ public class Interactive {
                         System.out.println("Criar uma nova TShirt -> addTShirt <codUtilizador>;<condicao>;<estado>;<nrDonos>;<descricao>;<marca>;<cod>;<precoBase>;<correcaoPreco>;<transportadora>;<tamanho>;<padrao>.");
                         System.out.println("Criar uma nova Sapatilha -> addSapatilha <codUtilizador>;<condicao>;<estado>;<nrDonos>;<descricao>;<marca>;<cod>;<precoBase>;<correcaoPreco>;<transportadora>;<tamanho>;<atacadores (true/false)>;<cor>;<anoLancamento>;<premium (true/false)>.");
 
-                        System.out.println("\nCriar uma nova Transportadora -> addTransportadora <nome>");
+                        System.out.println("\nCriar uma nova Transportadora -> addTransportadora <nome> <expedicaoPequeno> <expedicaoMedio> <expedicaoGrande> <lucro> <imposto> <diasParaExpedicao>");
 
                         System.out.println("\nDepois de todos os artigos e utilizadores adicionados, pode criar uma nova Encomenda.");
                         System.out.println("Criar uma nova Encomenda -> addEncomenda <nrArtigos>;<codArtigo1>;<codArtigoN>;<precoExpedicao>;<estado>;<dataCriada>");
