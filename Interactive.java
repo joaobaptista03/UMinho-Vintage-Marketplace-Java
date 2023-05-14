@@ -77,8 +77,6 @@ public class Interactive {
                         GestãoVintage.mudarData(Integer.parseInt(parse_command[1]));
                         GestãoVintage.update();
                     }
-
-                    GestãoVintage.testar();
                 }
             }
 
