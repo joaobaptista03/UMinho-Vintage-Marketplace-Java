@@ -19,6 +19,14 @@ public class Interactive {
                     if (line.equalsIgnoreCase("utilizadorMaiorFaturacao")) System.out.println(GestãoVintage.getUtilizador(GestãoVintage.getUtilizadorMaiorFaturacao()));
 
                     else if (line.equalsIgnoreCase("--help")) {
+                        System.out.println("Sair do programa -> exit");
+                        
+                        System.out.println("Guardar as informações do programa -> save");
+                        
+                        System.out.println("Lucro da Vintage até ao momento -> lucroVintage");
+                        
+                        System.out.println("Informações do utilzador que mais faturou até ao momento -> utilizadorMaiorFaturacao");
+                        
                         System.out.println("Criar um novo utilizador -> addUtilizador <codigo>;<email>;<nome>;<morada>;<nrFiscal>;<totVendas>");
 
                         System.out.println("\nCriar uma nova Mala -> addMala <codUtilizador>;<condicao>;<estado>;<nrDonos>;<descricao>;<marca>;<cod>;<precoBase>;<correcaoPreco>;<transportadora>;<comprimento>;<largura>;<altura>;<material>;<anoColecao>;<premium (true/false)>.");
