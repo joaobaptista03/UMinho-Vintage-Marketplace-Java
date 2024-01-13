@@ -1,32 +1,32 @@
-# Nome do Projeto: Gestão Vintage
+# Vintage
 
-## Descrição
+## Description
 
-Vintage é um sistema de gestão de mercado online focado em artigos diversos, onde utilizadores podem vender, comprar e gerenciar encomendas. Este projeto Java inclui classes para manipulação de artigos, encomendas, utilizadores, e transportadoras, fornecendo uma base sólida para uma aplicação de e-commerce.
+Vintage is an online marketplace management system focused on various articles, where users can sell, buy, and manage orders. This Java project includes classes for handling articles, orders, users, and carriers, providing a solid foundation for an e-commerce application.
 
-## Instalação
+## Installation
 
-**Pré-requisitos:**
-- Java JDK 11 ou superior.
+**Prerequisites:**
+- Java JDK 11 or higher.
 
-**Passos para a instalação:**
-1. Clone o repositório para a sua máquina local:
+**Installation Steps:**
+1. Clone the repository to your local machine:
    ```bash
    git clone https://github.com/joaobaptista03/UMinho-Vintage-Marketplace-Java
     ```
-2. Navegue até a pasta do projeto clonado.
+2. Navigate to the cloned project folder.
     ```bash
    cd UMinho-Vintage-Marketplace-Java
     ```
 
-3. Compile o código-fonte (exemplo usando javac):
+3. Compile the source code (example using javac):
     ```bash
    javac Main.java
     ```
 
-4. Execute o comando seguinte no terminal:
+4. Run the following command in the terminal:
     ```bash
    java Main
     ```
 
-O programa iniciará um sistema interativo onde o utilizador poderá executar diferentes operações relacionadas à gestão de artigos, encomendas e utilizadores.
+The program will launch an interactive system where users can perform various operations related to the management of articles, orders, and users.
