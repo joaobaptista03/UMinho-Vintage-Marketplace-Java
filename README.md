@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Gestão Vintage é um sistema de gestão de mercado online focado em artigos diversos, onde utilizadores podem vender, comprar e gerenciar encomendas. Este projeto Java inclui classes para manipulação de artigos, encomendas, utilizadores, e transportadoras, fornecendo uma base sólida para uma aplicação de e-commerce.
+Vintage é um sistema de gestão de mercado online focado em artigos diversos, onde utilizadores podem vender, comprar e gerenciar encomendas. Este projeto Java inclui classes para manipulação de artigos, encomendas, utilizadores, e transportadoras, fornecendo uma base sólida para uma aplicação de e-commerce.
 
 ## Instalação
 
